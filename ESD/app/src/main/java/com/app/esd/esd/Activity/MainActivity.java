@@ -1,6 +1,7 @@
 package com.app.esd.esd.Activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -19,7 +20,7 @@ import com.app.esd.esd.R;
 import java.io.IOException;
 
 public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener {
-    Button btnDich, btnDoc;
+    Button btnDich, btnDoc, btnKeyboard;
     EditText edtText, edtSo;
     String text = "";
     int length = 0, totalLength = 0;
@@ -33,6 +34,8 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
         edtText = (EditText) findViewById(R.id.edt_text);
         btnDoc = (Button) findViewById(R.id.btn_doc);
         edtSo = (EditText) findViewById(R.id.edt_so);
+        btnKeyboard = (Button) findViewById(R.id.btn_keyboard);
+        btnKeyboard.setOnClickListener(this);
         btnDoc.setOnClickListener(this);
         btnDich.setOnClickListener(this);
 
@@ -68,7 +71,7 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
 
                 break;
             case R.id.btn_doc:
-                if (Integer.parseInt(edtSo.getText().toString()) < 45 && Integer.parseInt(edtSo.getText().toString())>0) {
+                if (Integer.parseInt(edtSo.getText().toString()) < 45 && Integer.parseInt(edtSo.getText().toString()) > 0) {
                     mediaPlayer = new MediaPlayer();
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setOnPreparedListener(this);
@@ -82,6 +85,10 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
                     mediaPlayer.prepareAsync();
                     mediaPlayer.setOnCompletionListener(this);
                 }
+                break;
+            case R.id.btn_keyboard:
+                Intent i=new Intent(this,Keyboard.class);
+                startActivity(i);
                 break;
 
         }

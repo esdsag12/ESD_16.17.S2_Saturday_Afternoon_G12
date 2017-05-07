@@ -14,12 +14,25 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="go cum tu"
             android:id="@+id/edt_text"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dich"
             android:id="@+id/btn_dich"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_so"
+            android:inputType="number"
+            android:hint="go so"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_doc"
+            android:text="doc am vi"/>
+
 
     </LinearLayout>
 

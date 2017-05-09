@@ -19,12 +19,12 @@ import com.app.esd.esd.R;
 
 import java.io.IOException;
 
-public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener {
+public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener {
     Button btnDich, btnDoc, btnKeyboard;
     EditText edtText, edtSo;
     String text = "";
     int length = 0, totalLength = 0;
-    MediaPlayer mediaPlayer = new MediaPlayer();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,40 +71,15 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
 
                 break;
             case R.id.btn_doc:
-                if (Integer.parseInt(edtSo.getText().toString()) < 45 && Integer.parseInt(edtSo.getText().toString()) > 0) {
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setOnPreparedListener(this);
-                    mediaPlayer.setOnErrorListener(this);
-                    try {
-                        mediaPlayer.setDataSource(getApplicationContext(), Uri.parse("https://noidung.tienganh123.com/file/baihoc/pronunciation/coban/" +
-                                "bai" + edtSo.getText().toString().trim() + "/u" + edtSo.getText().toString().trim() + ".mp3"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    mediaPlayer.prepareAsync();
-                    mediaPlayer.setOnCompletionListener(this);
-                }
+
                 break;
             case R.id.btn_keyboard:
-                Intent i=new Intent(this,Keyboard.class);
+                Intent i = new Intent(this, Keyboard.class);
                 startActivity(i);
                 break;
 
         }
     }
 
-    @Override
-    public void onPrepared(MediaPlayer mp) {
-        mp.start();
-    }
 
-    @Override
-    public boolean onError(MediaPlayer mp, int what, int extra) {
-        return false;
-    }
-
-    @Override
-    public void onCompletion(MediaPlayer mp) {
-    }
 }

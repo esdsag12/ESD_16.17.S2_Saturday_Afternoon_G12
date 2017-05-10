@@ -45,4 +45,78 @@
     <string name="sb_text_42">ŋ</string>
     <string name="sb_text_43">l</string>
     <string name="sb_text_44">r</string>
+
+    <string name="vowel1">Khi phát âm âm /i:/:
+\n- Lưỡi được nâng lên cao
+\n- Đầu lưỡi ở vị trí cao nhất
+\n- Miệng mở rộng sang 2 bên giống như khi cười
+\n- Phát âm kéo dài hơn so với nguyên âm ngắn</string>
+
+    <string name="vowel2">Âm /ɪ/ được phát âm tương tự âm /i:/ nhưng:
+\n- Lưỡi sẽ được hạ thấp hơn
+\n- Đầu lưỡi cũng hạ thấp hơn một chút
+\n- Miệng bớt mở rộng sang 2 bên hơn
+\n- Phát âm rất ngắn</string>
+
+    <string name="vowel3">So với âm /ɪ/, khi phát âm nguyên âm ngắn /e/:
+\n- Lưỡi sẽ được hạ thấp hơn
+\n- Phần sau lưỡi cũng hạ thấp hơn một chút
+\n- Miệng mở rộng sang hai bên hơn một chút
+\n-	Phát âm rất ngắn</string>
+
+    <string name="vowel4">So với âm /e/, khi phát âm nguyên âm ngắn /æ/:
+\n-	Lưỡi sẽ được hạ thấp hơn
+\n-	Phần sau lưỡi cũng hạ xuống rất thấp
+\n-	Miệng mở rộng hơn rất nhiều
+\n-	Phát âm rất ngắn</string>
+
+
+    <string name="vowel5">So với nguyên âm dài /ɑ:/, khi phát âm nguyên âm ngắn /ʌ/:
+\n-	Lưỡi sẽ nâng cao hơn một chút
+\n-	Phần sau lưỡi cũng nâng cao hơn
+\n-	Miệng thu hẹp hơn
+\n-	Phát âm rất ngắn</string>
+
+    <string name="vowel6">Khi phát âm nguyên âm dài /ɑ:/:
+\n-	Lưỡi sẽ được hạ thấp hơn một chút
+\n-	Phần sau lưỡi hạ thấp
+\n-	Miệng mở rộng
+\n-	Phát âm kéo dài hơn so với một nguyên âm ngắn</string>
+
+    <string name="vowel7">So với nguyên âm dài /ɔ:/, khi phát âm nguyên âm ngắn /ɒ/:
+\n-	Lưỡi hạ thấp hơn một chút
+\n- Đầu lưỡi cao hơn một chút
+\n-	Miệng chỉ hơi tròn môi
+\n-	Phát âm rất ngắn</string>
+
+    <string name="vowel8">Khi phát âm nguyên âm dài /ɔ:/:
+\n- Lưỡi cao trung bình
+\n- Đầu lưỡi hạ thấp
+\n- Tròn môi
+\n-	Phát âm kéo dài hơn so với một nguyên âm ngắn
+</string>
+
+    <string name="vowel9">Âm /ʊ/ được phát âm tương tự âm /u:/ nhưng:
+\n- Lưỡi hạ thấp hơn một chút
+\n- Phần sau lưỡi thấp hơn một chút
+\n- Hơi tròn môi
+\n- Phát âm rất ngắn</string>
+
+    <string name="vowel10">Khi phát âm nguyên âm dài /u:/:
+\n- Lưỡi được nâng cao
+\n- Đầu lưỡi thấp, phần sau của lưỡi nâng lên cao nhất
+\n- Khẩu hình môi tròn
+\n- Phát âm rõ và kéo dài hơn so với một nguyên âm ngắn</string>
+
+    <string name="vowel11">Khi phát âm nguyên âm dài /ɜ:/:
+\n- Lưỡi có độ cao trung bình trong miệng
+\n- Lưỡi thả lỏng tự nhiên
+\n- Miệng hơi mở và tự nhiên
+\n-	Phát âm kéo dài hơn so với một nguyên âm ngắn</string>
+
+    <string name="vowel12">So với nguyên âm dài /ɜ:/, nguyên âm ngắn /ə/ phát âm tương tự:
+\n-	Lưỡi cao trung bình
+\n-	Lưỡi thả lỏng tự nhiên
+\n-	Miệng mở một chút
+\n-	Phát âm rất ngắn</string>
 </resources>

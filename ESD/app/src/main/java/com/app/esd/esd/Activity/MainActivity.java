@@ -1,15 +1,11 @@
 package com.app.esd.esd.Activity;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.app.esd.esd.Interface.OxfordPronuncationListener;
@@ -17,14 +13,12 @@ import com.app.esd.esd.Modals.ApiModals.OxfordObject;
 import com.app.esd.esd.Modals.ServicesModals.OxfordPronunciationService;
 import com.app.esd.esd.R;
 
-import java.io.IOException;
-
 public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener {
     Button btnDich, btnDoc, btnKeyboard;
     EditText edtText, edtSo;
     String text = "";
     int length = 0, totalLength = 0;
-
+    private LinearLayout lnLearning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +32,8 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
         btnKeyboard.setOnClickListener(this);
         btnDoc.setOnClickListener(this);
         btnDich.setOnClickListener(this);
-
+        lnLearning = (LinearLayout) findViewById(R.id.lnLearning);
+        lnLearning.setOnClickListener(this);
 
     }
 
@@ -77,7 +72,9 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
                 Intent i = new Intent(this, Keyboard.class);
                 startActivity(i);
                 break;
-
+            case R.id.lnLearning:
+                Intent intent = new Intent(MainActivity.this,LearningActivity.class);
+                startActivity(intent);
         }
     }
 

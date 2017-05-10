@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.Keyboard"></activity>
+        <activity android:name=".Activity.LearningActivity" />
+        <activity android:name=".Activity.DetailVowelActivity"></activity>
     </application>
 
 </manifest>

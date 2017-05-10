@@ -115,7 +115,7 @@ public class LearningActivity extends AppCompatActivity {
         eplVowel.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent = new Intent(LearningActivity.this, DetailVowelActivity.class);
+                Intent intent = new Intent(LearningActivity.this, com.app.esd.esd.Activity.DetailVowelActivity.class);
                 intent.putExtra("id",mData.get(listHeader.get(groupPosition)).get(childPosition).getId());
                 intent.putExtra("vowel",mData.get(listHeader.get(groupPosition)).get(childPosition).getVowel());
                 startActivity(intent);

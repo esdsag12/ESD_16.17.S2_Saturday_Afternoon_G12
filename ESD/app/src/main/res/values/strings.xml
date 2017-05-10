@@ -46,6 +46,7 @@
     <string name="sb_text_43">l</string>
     <string name="sb_text_44">r</string>
 
+    <string name="example">Example:</string>
     <string name="vowel1">Khi phát âm âm /i:/:
 \n- Lưỡi được nâng lên cao
 \n- Đầu lưỡi ở vị trí cao nhất
@@ -160,4 +161,5 @@
 \n-	Môi chuyển từ hơi tròn đến hơi mở sang hai bên
 \n-	Hơi tròn môi
 \n-	Phần âm /ʊ/ được phát âm dài và to hơn so với phần âm /ə/</string>
+
 </resources>

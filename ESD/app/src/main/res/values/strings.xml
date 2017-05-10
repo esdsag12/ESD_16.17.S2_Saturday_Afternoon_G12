@@ -119,4 +119,45 @@
 \n-	Lưỡi thả lỏng tự nhiên
 \n-	Miệng mở một chút
 \n-	Phát âm rất ngắn</string>
+
+    <string name="vowel13">Khi phát âm nguyên âm đôi /eɪ/, cần chuyển từ phát âm âm /e đến phát âm âm /ɪ/:
+\n-	Lưỡi di chuyển lên trên
+\n-	Môi chuyển từ hơi mở rộng đến mở sang hai bên
+\n-	Phần âm /e/ được phát âm dài và to hơn so với phần âm /ɪ/</string>
+
+    <string name="vowel14">Khi phát âm nguyên âm đôi /aɪ/, cần chuyển từ phát âm âm /a:/ đến phát âm âm /ɪ/:
+\n-	Lưỡi nâng lên và hơi đẩy ra trước
+\n-	Môi chuyển từ mở rộng đến hơi mở sang hai bên
+\n-	Phần âm /a:/ được phát âm dài và to hơn so với phần âm /ɪ/</string>
+
+    <string name="vowel15">Khi phát âm nguyên âm đôi /ɔɪ/, cần chuyển từ phát âm âm /ɔ:/ đến phát âm âm /ɪ/:
+\n-	Lưỡi nâng lên và hơi đẩy ra trước
+\n-	Môi chuyển từ mở rộng đến hơi mở sang hai bên
+\n-	Phần âm /ɔ:/ được phát âm dài và to hơn so với phần âm /ɪ/</string>
+
+    <string name="vowel16">Khi phát âm nguyên âm đôi /aʊ/, cần chuyển từ phát âm âm /ɑ:/ đến phát âm âm /ʊ/:
+\n-	Lưỡi nâng cao hơn
+\n-	Môi chuyển từ hơi mở đến hơi tròn môi
+\n-	Phần âm /ɑ:/ được phát âm dài và to hơn so với phần âm /ʊ/</string>
+
+    <string name="vowel17">Khi phát âm nguyên âm đôi /əʊ/, cần chuyển từ phát âm âm /ə/ đến phát âm âm /ʊ/:
+\n-	Lưỡi nâng lên và lùi về phía sau
+\n-	Môi chuyển từ hơi mở đến hơi tròn môi
+\n-	Phần âm /ə/ được phát âm dài và to hơn so với phần âm /ʊ/</string>
+
+    <string name="vowel18">Khi phát âm nguyên âm đôi /ɪə/, cần chuyển từ phát âm âm /ɪ/ đến phát âm âm /ə/:
+\n-	Lưỡi hạ thấp hơn và lùi về phía sau
+\n-	Môi chuyển từ hơi mở sang hai bên đến mở tự nhiên
+\n-	Phần âm /ɪ/ được phát âm dài và to hơn so với phần âm /ə/</string>
+
+    <string name="vowel19">Khi phát âm nguyên âm đôi /eə/, cần chuyển từ phát âm âm /e/ đến phát âm âm /ə/:
+\n-	Lưỡi lùi về phía sau
+\n-	Môi chuyển từ mở hơi rộng sang mở trung bình
+\n-	Phần âm /e/ được phát âm dài và to hơn so với phần âm /ə/</string>
+
+    <string name="vowel20">Khi phát âm nguyên âm đôi /ʊə/, cần chuyển từ phát âm âm /ʊ/ đến phát âm âm /ə/:
+\n-	Lưỡi hạ thấp và hướng ra phía trước
+\n-	Môi chuyển từ hơi tròn đến hơi mở sang hai bên
+\n-	Hơi tròn môi
+\n-	Phần âm /ʊ/ được phát âm dài và to hơn so với phần âm /ə/</string>
 </resources>

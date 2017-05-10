@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="light_grey">#DDDDDD</color>
+    <color name="correct">#00ff08</color>
+    <color name="error">#ff0011</color>
+    <color name="vowel">#f27439</color>
 </resources>

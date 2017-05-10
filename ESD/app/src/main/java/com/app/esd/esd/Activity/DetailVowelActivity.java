@@ -1,17 +1,29 @@
 package com.app.esd.esd.Activity;
 
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,28 +34,36 @@ import com.app.esd.esd.Modals.ServicesModals.OxfordPronunciationService;
 import com.app.esd.esd.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class DetailVowelActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener,OxfordPronuncationListener {
+public class DetailVowelActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener, OxfordPronuncationListener {
     private TextView tvContent;
     private String vowel;
     private Toolbar toolbar;
-    private ImageView imgSpeak, img;
+    private ImageView imgSpeak, imgSpeakDialog, img;
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private int id;
 
     private String[] string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12,
             string13, string14, string15, string16, string17, string18, string19, string20;
-    private List<String> list1,list2,list3,list4,list5,list6,list7,list8,list9,list10,list11,list12,list13,list14,list15,
-            list16,list17,list18,list19,list20;
+    private List<String> list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15,
+            list16, list17, list18, list19, list20;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView recyclerView;
     private ExampleAdapter exampleAdapter;
     private String strExample;
     private TextToSpeech textToSpeech;
+    private TextView tvExample, tvVowel, tvClose, tvResult;
     int length = 0, totalLength = 0;
+
+    private ImageView imgMicro;
+    private String[] text;
+    private LinearLayout lnClose;
+    private static final int REQ_CODE_SPEECH_INPUT = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +88,10 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         recyclerView = (RecyclerView) findViewById(R.id.list);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        textToSpeech=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
+                if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.UK);
                 }
             }
@@ -93,83 +113,83 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         if (i == 1) {
             tvContent.setText(getResources().getString(R.string.vowel1));
             img.setImageResource(R.drawable.vowel1);
-            exampleAdapter = new ExampleAdapter(this,list1);
+            exampleAdapter = new ExampleAdapter(this, list1);
         } else if (i == 2) {
             tvContent.setText(getResources().getString(R.string.vowel2));
             img.setImageResource(R.drawable.vowel2);
-            exampleAdapter = new ExampleAdapter(this,list2);
+            exampleAdapter = new ExampleAdapter(this, list2);
         } else if (i == 3) {
             tvContent.setText(getResources().getString(R.string.vowel3));
             img.setImageResource(R.drawable.vowel3);
-            exampleAdapter = new ExampleAdapter(this,list3);
+            exampleAdapter = new ExampleAdapter(this, list3);
         } else if (i == 4) {
             tvContent.setText(getResources().getString(R.string.vowel4));
             img.setImageResource(R.drawable.vowel4);
-            exampleAdapter = new ExampleAdapter(this,list4);
+            exampleAdapter = new ExampleAdapter(this, list4);
         } else if (i == 5) {
             tvContent.setText(getResources().getString(R.string.vowel5));
             img.setImageResource(R.drawable.vowel5);
-            exampleAdapter = new ExampleAdapter(this,list5);
+            exampleAdapter = new ExampleAdapter(this, list5);
         } else if (i == 6) {
             tvContent.setText(getResources().getString(R.string.vowel6));
             img.setImageResource(R.drawable.vowel6);
-            exampleAdapter = new ExampleAdapter(this,list6);
+            exampleAdapter = new ExampleAdapter(this, list6);
         } else if (i == 7) {
             tvContent.setText(getResources().getString(R.string.vowel7));
             img.setImageResource(R.drawable.vowel7);
-            exampleAdapter = new ExampleAdapter(this,list7);
+            exampleAdapter = new ExampleAdapter(this, list7);
         } else if (i == 8) {
             tvContent.setText(getResources().getString(R.string.vowel8));
             img.setImageResource(R.drawable.vowel8);
-            exampleAdapter = new ExampleAdapter(this,list8);
+            exampleAdapter = new ExampleAdapter(this, list8);
         } else if (i == 9) {
             tvContent.setText(getResources().getString(R.string.vowel9));
             img.setImageResource(R.drawable.vowel9);
-            exampleAdapter = new ExampleAdapter(this,list9);
+            exampleAdapter = new ExampleAdapter(this, list9);
         } else if (i == 10) {
             tvContent.setText(getResources().getString(R.string.vowel10));
             img.setImageResource(R.drawable.vowel10);
-            exampleAdapter = new ExampleAdapter(this,list10);
+            exampleAdapter = new ExampleAdapter(this, list10);
         } else if (i == 11) {
             tvContent.setText(getResources().getString(R.string.vowel11));
             img.setImageResource(R.drawable.vowel11);
-            exampleAdapter = new ExampleAdapter(this,list11);
+            exampleAdapter = new ExampleAdapter(this, list11);
         } else if (i == 12) {
             tvContent.setText(getResources().getString(R.string.vowel12));
             img.setImageResource(R.drawable.vowel12);
-            exampleAdapter = new ExampleAdapter(this,list12);
+            exampleAdapter = new ExampleAdapter(this, list12);
         } else if (i == 13) {
             tvContent.setText(getResources().getString(R.string.vowel13));
             img.setImageResource(R.drawable.vowel13);
-            exampleAdapter = new ExampleAdapter(this,list13);
+            exampleAdapter = new ExampleAdapter(this, list13);
         } else if (i == 14) {
             tvContent.setText(getResources().getString(R.string.vowel14));
             img.setImageResource(R.drawable.vowel14);
-            exampleAdapter = new ExampleAdapter(this,list14);
+            exampleAdapter = new ExampleAdapter(this, list14);
         } else if (i == 15) {
             tvContent.setText(getResources().getString(R.string.vowel15));
             img.setImageResource(R.drawable.vowel15);
-            exampleAdapter = new ExampleAdapter(this,list15);
+            exampleAdapter = new ExampleAdapter(this, list15);
         } else if (i == 16) {
             tvContent.setText(getResources().getString(R.string.vowel16));
             img.setImageResource(R.drawable.vowel16);
-            exampleAdapter = new ExampleAdapter(this,list16);
+            exampleAdapter = new ExampleAdapter(this, list16);
         } else if (i == 17) {
             tvContent.setText(getResources().getString(R.string.vowel17));
             img.setImageResource(R.drawable.vowel17);
-            exampleAdapter = new ExampleAdapter(this,list17);
+            exampleAdapter = new ExampleAdapter(this, list17);
         } else if (i == 18) {
             tvContent.setText(getResources().getString(R.string.vowel18));
             img.setImageResource(R.drawable.vowel18);
-            exampleAdapter = new ExampleAdapter(this,list18);
+            exampleAdapter = new ExampleAdapter(this, list18);
         } else if (i == 19) {
             tvContent.setText(getResources().getString(R.string.vowel19));
             img.setImageResource(R.drawable.vowel19);
-            exampleAdapter = new ExampleAdapter(this,list19);
+            exampleAdapter = new ExampleAdapter(this, list19);
         } else if (i == 20) {
             tvContent.setText(getResources().getString(R.string.vowel20));
             img.setImageResource(R.drawable.vowel20);
-            exampleAdapter = new ExampleAdapter(this,list20);
+            exampleAdapter = new ExampleAdapter(this, list20);
         }
         exampleAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(exampleAdapter);
@@ -195,7 +215,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
                 "walk (v)", "thought (v)", "taught (v)", "small (adj)", "important (adj)"};
         string9 = new String[]{"room (n)", "pool (n)", "flute (n)", "glue (n)",
                 "group (n)", "music (n)", "chew (v)", "move (v)", "suitable (adj)"};
-        string10 = new String[]{"book (n)", "wool (n)", "woman (n)", "childhood (n)",
+        string10 = new String[]{"boClose (n)", "wool (n)", "woman (n)", "childhood (n)",
                 "neighbourhood", "good (adj)", "full (adj)", "would (modal)", "should (modal)"};
         string11 = new String[]{"term (n)", "firm (n)", "bird (n)", "word (n)",
                 "burglar (n)", "journey (n)", "learn (v)", "dirty (adj)", "thirty (number)"};
@@ -294,23 +314,117 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         } else {
             strExample += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
         }
-        Toast.makeText(this, strExample, Toast.LENGTH_SHORT).show();
+        showDialogFilter(text[0], strExample);
     }
 
-    public void speakExample(String example)
-    {
-        strExample = "";
-        String[] text=example.split(" ");
+    public void speakExample(String example) {
+        strExample ="";
+        text = example.split(" ");
         new OxfordPronunciationService(this).execute(text[0].trim());
-        textToSpeech.speak(text[0], TextToSpeech.QUEUE_FLUSH, null);
     }
 
     @Override
     protected void onPause() {
-        if(textToSpeech !=null){
+        if (textToSpeech != null) {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
         super.onPause();
+    }
+
+    private void showDialogFilter(String example, String vowel) {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_example);
+       /*
+       Init components
+        */
+
+        tvExample = (TextView) dialog.findViewById(R.id.tvExample);
+        tvVowel = (TextView) dialog.findViewById(R.id.tvVowel);
+        lnClose = (LinearLayout) dialog.findViewById(R.id.lnClose);
+        tvResult = (TextView) dialog.findViewById(R.id.tvResult);
+        imgMicro = (ImageView) dialog.findViewById(R.id.imgMicro);
+        imgSpeakDialog = (ImageView) dialog.findViewById(R.id.imgSpeakDialog);
+
+        tvExample.setText(example);
+        tvVowel.setText("/"+vowel+"/");
+
+        //format position dialog
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setGravity(Gravity.TOP);
+        WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+
+        layoutParams.y = getPixelValue(this, 130);
+        //layoutParams.x = convertDpToPixel((float) 130 / 1, ResortsActivity.this);
+        dialog.getWindow().setAttributes(layoutParams);
+        imgSpeakDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textToSpeech.speak(text[0], TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
+        lnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        imgMicro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
+        dialog.show();
+    }
+
+    public static int getPixelValue(Context context, int dimenId) {
+        Resources resources = context.getResources();
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dimenId,
+                resources.getDisplayMetrics()
+        );
+    }
+
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.UK);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Phát âm");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(), "Thiết bị không hỗ trợ",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQ_CODE_SPEECH_INPUT: {
+                    if (data != null) {
+                        ArrayList<String> result = data
+                                .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                        String speak = result.get(0);
+                        if (tvExample.getText().toString().equals(speak)) {
+                            tvResult.setText("Phát âm đúng: " + speak);
+                            tvResult.setTextColor(getResources().getColor(R.color.correct));
+                        } else {
+                            tvResult.setText("Phát âm sai: " + speak);
+                            tvResult.setTextColor(getResources().getColor(R.color.error));
+                        }
+                    }
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+        }
     }
 }

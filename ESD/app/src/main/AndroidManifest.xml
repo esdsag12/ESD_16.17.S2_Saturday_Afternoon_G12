@@ -14,12 +14,14 @@
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.Keyboard"></activity>
+        <activity android:name=".Activity.Keyboard" />
         <activity android:name=".Activity.LearningActivity" />
-        <activity android:name=".Activity.DetailVowelActivity"></activity>
+        <activity android:name=".Activity.DetailVowelActivity" />
+        <activity android:name=".Activity.PracticeChooseWord"></activity>
     </application>
 
 </manifest>

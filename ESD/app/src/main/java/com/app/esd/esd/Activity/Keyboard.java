@@ -299,7 +299,7 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
                 break;
         }
         if (num < 45&&num>0) {
-            tempText = AppConst.listSymbol[num - 1].trim();
+            tempText = AppConst.LIST_SYMBOL[num - 1].trim();
             try {
                 String mMp3Name = "u" + num;
                 Resources res = getResources();

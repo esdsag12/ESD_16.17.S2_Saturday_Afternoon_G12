@@ -35,6 +35,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/btn_practice_read"
+            android:text="Luyen tap doc"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_keyboard"
             android:text="keyboard"/>
 

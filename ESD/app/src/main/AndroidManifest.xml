@@ -22,6 +22,7 @@
         <activity android:name=".Activity.LearningActivity" />
         <activity android:name=".Activity.DetailVowelActivity" />
         <activity android:name=".Activity.PracticeChooseWord"></activity>
+        <activity android:name=".Activity.PracticeRead" />
     </application>
 
 </manifest>

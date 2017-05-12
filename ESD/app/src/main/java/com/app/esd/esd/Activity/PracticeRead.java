@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +34,7 @@ import java.util.Locale;
 
 public class PracticeRead extends BaseActivity implements View.OnClickListener, OxfordPronuncationListener, TextToSpeech.OnInitListener {
     TextView txtTextTest, txtTextPronunTest, txtTextTestAnswer, txtTextPronunAnswer;
-    ImageView btnListen,btnRead, btnNext;
+    ImageView btnListen, btnRead, btnNext;
     String textTest;
     private TextToSpeech textToSpeech;
     int pos, posListTest;
@@ -42,6 +44,7 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
     Sentence tempSentence;
     int type = 0;
     HashMap<String, String> map;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,7 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
         txtTextPronunAnswer = (TextView) findViewById(R.id.txt_pronunciation_answer);
         btnListen = (ImageView) findViewById(R.id.btn_listen);
         btnNext = (ImageView) findViewById(R.id.btn_next);
-        btnRead=(ImageView)findViewById(R.id.btn_read);
+        btnRead = (ImageView) findViewById(R.id.btn_read);
         btnRead.setOnClickListener(this);
         btnNext.setOnClickListener(this);
         btnListen.setOnClickListener(this);
@@ -98,10 +101,9 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
     }
 
 
-
     @Override
     public void onOxfordPronuncationListenerSuccess(OxfordObject oxfordObject) {
-        if(null!=oxfordObject) {
+        if (null != oxfordObject) {
             if (AppConst.TEXT_EMTY.equals(textTest)) {
                 textTest += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
             } else {
@@ -123,36 +125,134 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
                     }
                 } else {
                     closeDialog();
-                    txtTextTestAnswer.setText(tempSentence.getText());
-                    txtTextPronunAnswer.setText(tempSentence.getPronunciation());
-                    if (tempSentence.getPronunciation().trim().equals(listTextTest.get(posListTest).getPronunciation())) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            txtTextPronunAnswer.setTextColor(getColor(R.color.correct));
-                            txtTextTestAnswer.setTextColor(getColor(R.color.correct));
-                        }else{
-                            txtTextPronunAnswer.setTextColor(getResources().getColor(R.color.correct));
-                            txtTextTestAnswer.setTextColor(getResources().getColor(R.color.correct));
-                        }
-                        Snackbar.make(getWindow().getDecorView(),"Good Job!", Snackbar.LENGTH_SHORT);
-                    } else {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            txtTextPronunAnswer.setTextColor(getColor(R.color.error));
-                            txtTextTestAnswer.setTextColor(getColor(R.color.error));
-                        }else{
-                            txtTextPronunAnswer.setTextColor(getResources().getColor(R.color.error));
-                            txtTextTestAnswer.setTextColor(getResources().getColor(R.color.error));
-                        }
-                        Snackbar.make(getWindow().getDecorView(),"Try again", Snackbar.LENGTH_SHORT);
 
-                    }
+                    //txtTextPronunAnswer.setText(tempSentence.getPronunciation());
+                    setCorrectAnswer(tempSentence.getText(), listTextTest.get(posListTest).getText(), tempSentence.getPronunciation(), listTextTest.get(posListTest).getPronunciation());
+
+//                    if (tempSentence.getPronunciation().trim().equals(listTextTest.get(posListTest).getPronunciation())) {
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                            txtTextPronunAnswer.setTextColor(getColor(R.color.correct));
+//                            txtTextTestAnswer.setTextColor(getColor(R.color.correct));
+//                        } else {
+//                            txtTextPronunAnswer.setTextColor(getResources().getColor(R.color.correct));
+//                            txtTextTestAnswer.setTextColor(getResources().getColor(R.color.correct));
+//                        }
+//                        Snackbar.make(getWindow().getDecorView(), "Good Job!", Snackbar.LENGTH_SHORT);
+//                    } else {
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                            txtTextPronunAnswer.setTextColor(getColor(R.color.error));
+//                            txtTextTestAnswer.setTextColor(getColor(R.color.error));
+//                        } else {
+//                            txtTextPronunAnswer.setTextColor(getResources().getColor(R.color.error));
+//                            txtTextTestAnswer.setTextColor(getResources().getColor(R.color.error));
+//                        }
+//                        Snackbar.make(getWindow().getDecorView(), "Try again", Snackbar.LENGTH_SHORT);
+//
+//                    }
 
                 }
 
 
             }
-        }else{
+        } else {
             Toast.makeText(this, "Api loi, co the do tu nhap vao", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void setCorrectAnswer(String text, String correctText, String pronun, String correctPronun) {
+        String[] listWord = text.split(" ");
+        String[] listWordCorrect = correctText.split(" ");
+        String[] listPronun = pronun.split(" ");
+        String[] listPronunCorrect = correctPronun.split(" ");
+        //String finalPronunciation="<font COLOR=\'RED\'><b>" + "android-coding" + "</b></font>" + "<font COLOR=\'#00FF00\'><i>" + ".blogspot" + "</i></font>" + ".com";
+        String correctColorStart = "<font COLOR=\'GREEN\'><b>";
+        String finalPronunciation = "";
+        String finalString = "";
+        String colorEnd = "</b></font>";
+        String unCorrectColorStart = "<font COLOR=\'RED\'><b>";
+        String lackColorStart = "<font COLOR=\'YELLOW\'><b>";
+        String overColorStart = "<font COLOR=\'BLUE\'><b>";
+        int isWrongAll=-1;
+        if (listPronun.length > listPronunCorrect.length) {
+            for (int i = 0; i < listPronunCorrect.length; i++) {
+                if (listPronun[i].trim().equals(listPronunCorrect[i])) {
+                    if (finalPronunciation == "") {
+                        finalPronunciation += correctColorStart + listPronun[i] + colorEnd;
+                        finalString += correctColorStart + listWord[i] + colorEnd;
+                    } else {
+                        finalPronunciation += " " + correctColorStart + listPronun[i] + colorEnd;
+                        finalString += " " + correctColorStart + listWord[i] + colorEnd;
+                    }
+                } else {
+                    if (finalPronunciation == "") {
+                        finalPronunciation += unCorrectColorStart + listPronun[i] + colorEnd;
+                        finalString += unCorrectColorStart + listWord[i] + colorEnd;
+                    } else {
+                        finalPronunciation += " " + unCorrectColorStart + listPronun[i] + colorEnd;
+                        finalString += " " + unCorrectColorStart + listWord[i] + colorEnd;
+                    }
+                    isWrongAll++;
+                }
+                if(isWrongAll==listPronunCorrect.length-1){
+                    for (int j = i+1; j < listWord.length; j++) {
+                        finalPronunciation += " " + unCorrectColorStart + listPronun[j] + colorEnd;
+                        finalString += " " + unCorrectColorStart + listWord[j] + colorEnd;
+                    }
+                }else{
+                    if (i == listPronunCorrect.length - 1) {
+                        for (int j = i+1; j < listWord.length; j++) {
+                            finalPronunciation += " " + overColorStart + listPronun[j] + colorEnd;
+                            finalString += " " + overColorStart + listWord[j] + colorEnd;
+                        }
+                    }
+                }
+
+            }
+        } else {
+            for (int i = 0; i < listPronun.length; i++) {
+                if (listPronun[i].trim().equals(listPronunCorrect[i])) {
+                    if (finalPronunciation == "") {
+                        finalPronunciation += correctColorStart + listPronun[i] + colorEnd;
+                        finalString += correctColorStart + listWord[i] + colorEnd;
+                    } else {
+                        finalPronunciation += " " + correctColorStart + listPronun[i] + colorEnd;
+                        finalString +=" "+ correctColorStart + listWord[i] + colorEnd;
+                    }
+                } else {
+                    if (finalPronunciation == "") {
+                        finalPronunciation += unCorrectColorStart + listPronun[i] + colorEnd;
+                        finalString += unCorrectColorStart + listWord[i] + colorEnd;
+                    } else {
+                        finalPronunciation += " " + unCorrectColorStart + listPronun[i] + colorEnd;
+                        finalString +=" "+ unCorrectColorStart + listWord[i] + colorEnd;
+                    }
+                    isWrongAll++;
+                }
+                if(isWrongAll==listPronun.length-1){
+                    for (int j = i+1; j < listPronunCorrect.length; j++) {
+                        finalPronunciation += " " + unCorrectColorStart + listPronunCorrect[j] + colorEnd;
+                        finalString += " " + unCorrectColorStart + listWordCorrect[j] + colorEnd;
+                    }
+                }else {
+                    if (i == listPronun.length - 1 && listPronun.length < listPronunCorrect.length) {
+                        for (int j = i + 1; j < listPronunCorrect.length; j++) {
+                            finalPronunciation += " " + lackColorStart + listPronunCorrect[j] + colorEnd;
+                            finalString += " " + lackColorStart + listWordCorrect[j] + colorEnd;
+                        }
+                    }
+                }
+
+
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            txtTextPronunAnswer.setText(Html.fromHtml(finalPronunciation, 1));
+            txtTextTestAnswer.setText(Html.fromHtml(finalString, 1));
+        } else {
+            txtTextPronunAnswer.setText(Html.fromHtml(finalPronunciation));
+            txtTextTestAnswer.setText(Html.fromHtml(finalString));
+        }
+
     }
 
     @Override
@@ -161,12 +261,11 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
         if (requestCode == 100) {
             if (resultCode == RESULT_OK && null != data) {
                 ArrayList<String> res = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                Log.i("CuongNV",res.get(0).toString());
+                Log.i("CuongNV", res.get(0).toString());
                 type = 1;
                 showProgressDialog("please wait", "load data");
-                if(res.get(0).contains("*")){
-
-                }else{
+                if (res.get(0).contains("*")) {
+                } else {
                     getData(res.get(0));
                 }
 
@@ -194,19 +293,19 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.btn_next:
                 posListTest++;
-                if(posListTest<listTextTest.size()) {
+                if (posListTest < listTextTest.size()) {
                     txtTextTest.setText(listTextTest.get(posListTest).getText());
                     txtTextPronunTest.setText(listTextTest.get(posListTest).getPronunciation());
 
-                }else{
-                    posListTest=0;
+                } else {
+                    posListTest = 0;
                 }
                 txtTextTestAnswer.setText(AppConst.TEXT_EMTY);
                 txtTextPronunAnswer.setText(AppConst.TEXT_EMTY);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     txtTextPronunAnswer.setTextColor(getColor(R.color.black));
                     txtTextTestAnswer.setTextColor(getColor(R.color.black));
-                }else{
+                } else {
                     txtTextPronunAnswer.setTextColor(getResources().getColor(R.color.black));
                     txtTextTestAnswer.setTextColor(getResources().getColor(R.color.black));
                 }

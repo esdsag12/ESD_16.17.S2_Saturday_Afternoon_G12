@@ -61,7 +61,12 @@ public class OxfordPronunciationService extends AsyncTask<String, Integer, Strin
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         Gson gson = new Gson();
-        OxfordObject oxfordObject = gson.fromJson(result, OxfordObject.class);
-        oxfordPronuncationListener.onOxfordPronuncationListenerSuccess(oxfordObject);
+        try{
+            OxfordObject oxfordObject = gson.fromJson(result, OxfordObject.class);
+            oxfordPronuncationListener.onOxfordPronuncationListenerSuccess(oxfordObject);
+        }catch (Exception e){
+            oxfordPronuncationListener.onOxfordPronuncationListenerSuccess(null);
+        }
+
     }
 }

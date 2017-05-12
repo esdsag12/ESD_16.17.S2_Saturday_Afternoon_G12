@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,7 +64,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
     private String[] text;
     private LinearLayout lnClose;
     private static final int REQ_CODE_SPEECH_INPUT = 100;
-
+    private FloatingActionButton fabPractice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +97,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         });
+        fabPractice = (FloatingActionButton)findViewById(R.id.fabPractice);
     }
 
     public void setToolbar() {
@@ -107,6 +109,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
 
     public void setEventClick() {
         imgSpeak.setOnClickListener(this);
+        fabPractice.setOnClickListener(this);
     }
 
     public void setData(int i) {
@@ -304,6 +307,12 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.imgSpeak:
                 speakVowel(id);
+                break;
+            case R.id.fabPractice:
+                Intent intent = new Intent(DetailVowelActivity.this,PracticeChooseWord.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                break;
         }
     }
 

@@ -14,7 +14,7 @@ import com.app.esd.esd.Modals.ServicesModals.OxfordPronunciationService;
 import com.app.esd.esd.R;
 
 public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener {
-    Button btnDich, btnDoc, btnKeyboard;
+    Button btnDich, btnKeyboard,btnPracticeRead;
     EditText edtText, edtSo;
     String text = "";
     int length = 0, totalLength = 0;
@@ -26,11 +26,11 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
         setContentView(R.layout.activity_main);
         btnDich = (Button) findViewById(R.id.btn_dich);
         edtText = (EditText) findViewById(R.id.edt_text);
-        btnDoc = (Button) findViewById(R.id.btn_doc);
+        btnPracticeRead = (Button) findViewById(R.id.btn_practice_read);
         edtSo = (EditText) findViewById(R.id.edt_so);
         btnKeyboard = (Button) findViewById(R.id.btn_keyboard);
         btnKeyboard.setOnClickListener(this);
-        btnDoc.setOnClickListener(this);
+        btnPracticeRead.setOnClickListener(this);
         btnDich.setOnClickListener(this);
         lnLearning = (LinearLayout) findViewById(R.id.lnLearning);
         lnLearning.setOnClickListener(this);
@@ -65,8 +65,9 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
                 }
 
                 break;
-            case R.id.btn_doc:
-
+            case R.id.btn_practice_read:
+                Intent i2 = new Intent(this, PracticeRead.class);
+                startActivity(i2);
                 break;
             case R.id.btn_keyboard:
                 Intent i = new Intent(this, Keyboard.class);

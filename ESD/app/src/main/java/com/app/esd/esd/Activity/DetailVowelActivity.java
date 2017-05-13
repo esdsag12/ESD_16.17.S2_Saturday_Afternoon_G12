@@ -38,7 +38,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class DetailVowelActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener, OxfordPronuncationListener {
     private TextView tvContent;
@@ -65,6 +64,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
     private LinearLayout lnClose;
     private static final int REQ_CODE_SPEECH_INPUT = 100;
     private FloatingActionButton fabPractice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,15 +89,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         recyclerView = (RecyclerView) findViewById(R.id.list);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    textToSpeech.setLanguage(Locale.UK);
-                }
-            }
-        });
-        fabPractice = (FloatingActionButton)findViewById(R.id.fabPractice);
+        fabPractice = (FloatingActionButton) findViewById(R.id.fabPractice);
     }
 
     public void setToolbar() {
@@ -309,8 +301,8 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
                 speakVowel(id);
                 break;
             case R.id.fabPractice:
-                Intent intent = new Intent(DetailVowelActivity.this,PracticeChooseWord.class);
-                intent.putExtra("id",id);
+                Intent intent = new Intent(DetailVowelActivity.this, PracticeChooseWord.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
                 break;
         }
@@ -327,7 +319,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void speakExample(String example) {
-        strExample ="";
+        strExample = "";
         text = example.split(" ");
         new OxfordPronunciationService(this).execute(text[0].trim());
     }
@@ -357,7 +349,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         imgSpeakDialog = (ImageView) dialog.findViewById(R.id.imgSpeakDialog);
 
         tvExample.setText(example);
-        tvVowel.setText("/"+vowel+"/");
+        tvVowel.setText("/" + vowel + "/");
 
         //format position dialog
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -370,7 +362,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         imgSpeakDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textToSpeech.speak(text[0], TextToSpeech.QUEUE_FLUSH, null);
+                MainActivity.textToSpeech.speak(text[0], TextToSpeech.QUEUE_FLUSH, null);
             }
         });
         lnClose.setOnClickListener(new View.OnClickListener() {
@@ -399,9 +391,8 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
 
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.UK);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Phát âm");
         try {
             startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
@@ -419,7 +410,7 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
                     if (data != null) {
                         ArrayList<String> result = data
                                 .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                        String speak = result.get(0);
+                        String speak = result.get(0).substring(0, 1).toLowerCase() + result.get(0).substring(1);
                         if (tvExample.getText().toString().equals(speak)) {
                             tvResult.setText("Phát âm đúng: " + speak);
                             tvResult.setTextColor(getResources().getColor(R.color.correct));

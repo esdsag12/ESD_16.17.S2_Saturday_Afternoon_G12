@@ -2,6 +2,7 @@ package com.app.esd.esd.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,13 +14,15 @@ import com.app.esd.esd.Modals.ApiModals.OxfordObject;
 import com.app.esd.esd.Modals.ServicesModals.OxfordPronunciationService;
 import com.app.esd.esd.R;
 
+import java.util.Locale;
+
 public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener {
     Button btnDich, btnKeyboard,btnPracticeRead;
     EditText edtText, edtSo;
     String text = "";
     int length = 0, totalLength = 0;
     private LinearLayout lnLearning;
-
+    public static TextToSpeech textToSpeech;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,14 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
         btnDich.setOnClickListener(this);
         lnLearning = (LinearLayout) findViewById(R.id.lnLearning);
         lnLearning.setOnClickListener(this);
-
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.ENGLISH);
+                }
+            }
+        });
     }
 
     @Override

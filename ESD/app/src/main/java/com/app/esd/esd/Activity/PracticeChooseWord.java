@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,13 +12,13 @@ import android.widget.TextView;
 import com.app.esd.esd.R;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
-public class PracticeChooseWord extends AppCompatActivity implements View.OnClickListener {
+public class PracticeChooseWord extends BaseActivity implements View.OnClickListener {
     private TextView tv1, tv2, tv3, tv4;
     private ImageView imgSpeak;
     private String[] string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12,
@@ -30,8 +29,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
     private TextToSpeech textToSpeech;
     private String strExample;
     private String[] text;
-    private LinearLayout ln1,ln2,ln3,ln4;
+    private LinearLayout ln1, ln2, ln3, ln4;
     private int id;
+    HashMap<String, String> map;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +57,7 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
         ln3 = (LinearLayout) findViewById(R.id.ln3);
         ln4 = (LinearLayout) findViewById(R.id.ln4);
         imgSpeak = (ImageView) findViewById(R.id.imgSpeak);
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    textToSpeech.setLanguage(Locale.UK);
-                }
-            }
-        });
+        map = new HashMap<String, String>();
     }
 
     public void setEventClick() {
@@ -140,14 +134,12 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
         random = new Random();
 
     }
-    public void setData(int i)
-    {
-        if(i==1 || i == 2) {
-            if(i==1) {
+
+    public void setData(int i) {
+        if (i == 1 || i == 2) {
+            if (i == 1) {
                 text = string1[rand(0, string1.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string2[rand(0, string2.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -184,13 +176,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==3 || i == 4) {
-            if(i==3) {
+        } else if (i == 3 || i == 4) {
+            if (i == 3) {
                 text = string3[rand(0, string3.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string4[rand(0, string4.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -227,13 +216,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==5 || i == 6) {
-            if(i==5) {
+        } else if (i == 5 || i == 6) {
+            if (i == 5) {
                 text = string5[rand(0, string5.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string6[rand(0, string6.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -270,13 +256,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==7 || i == 8) {
-            if(i==7) {
+        } else if (i == 7 || i == 8) {
+            if (i == 7) {
                 text = string7[rand(0, string7.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string8[rand(0, string8.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -313,13 +296,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==9|| i == 10) {
-            if(i==9) {
+        } else if (i == 9 || i == 10) {
+            if (i == 9) {
                 text = string9[rand(0, string9.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string10[rand(0, string10.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -356,13 +336,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==11|| i == 12) {
-            if(i==11) {
+        } else if (i == 11 || i == 12) {
+            if (i == 11) {
                 text = string11[rand(0, string11.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string12[rand(0, string12.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -399,13 +376,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==13|| i == 14) {
-            if(i==13) {
+        } else if (i == 13 || i == 14) {
+            if (i == 13) {
                 text = string13[rand(0, string13.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string14[rand(0, string14.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -442,13 +416,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==15|| i == 16) {
-            if(i==15) {
+        } else if (i == 15 || i == 16) {
+            if (i == 15) {
                 text = string15[rand(0, string15.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string16[rand(0, string16.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -485,13 +456,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==17|| i == 18) {
-            if(i==17) {
+        } else if (i == 17 || i == 18) {
+            if (i == 17) {
                 text = string17[rand(0, string17.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string18[rand(0, string18.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -528,13 +496,10 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     break;
                 }
             }
-        }
-        else if(i==19|| i == 20) {
-            if(i==19) {
+        } else if (i == 19 || i == 20) {
+            if (i == 19) {
                 text = string19[rand(0, string19.length - 1)].split(" ");
-            }
-            else
-            {
+            } else {
                 text = string20[rand(0, string20.length - 1)].split(" ");
             }
             strExample = text[0];
@@ -573,60 +538,54 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
             }
         }
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imgSpeak:
-                textToSpeech.speak(strExample, TextToSpeech.QUEUE_FLUSH, null);
+                map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "UniqueID");
+                MainActivity.textToSpeech.speak(strExample, TextToSpeech.QUEUE_FLUSH, map);
                 break;
             case R.id.ln1:
-                if(tv1.getText().toString().equals(strExample)){
+                if (tv1.getText().toString().equals(strExample)) {
                     ln1.setBackgroundColor(getResources().getColor(R.color.correct));
                     setNewData();
-                }
-                else
-                {
+                } else {
                     ln1.setBackgroundColor(getResources().getColor(R.color.error));
                     clearError();
                 }
                 break;
             case R.id.ln2:
-                if(tv2.getText().toString().equals(strExample)){
+                if (tv2.getText().toString().equals(strExample)) {
                     ln2.setBackgroundColor(getResources().getColor(R.color.correct));
                     setNewData();
-                }
-                else
-                {
+                } else {
                     ln2.setBackgroundColor(getResources().getColor(R.color.error));
                     clearError();
                 }
                 break;
             case R.id.ln3:
-                if(tv3.getText().toString().equals(strExample)){
+                if (tv3.getText().toString().equals(strExample)) {
                     ln3.setBackgroundColor(getResources().getColor(R.color.correct));
                     setNewData();
-                }
-                else
-                {
+                } else {
                     ln3.setBackgroundColor(getResources().getColor(R.color.error));
                     clearError();
                 }
                 break;
             case R.id.ln4:
-                if(tv4.getText().toString().equals(strExample)){
+                if (tv4.getText().toString().equals(strExample)) {
                     ln4.setBackgroundColor(getResources().getColor(R.color.correct));
                     setNewData();
-                }
-                else
-                {
+                } else {
                     ln4.setBackgroundColor(getResources().getColor(R.color.error));
                     clearError();
                 }
                 break;
         }
     }
-    public void setNewData()
-    {
+
+    public void setNewData() {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -634,13 +593,14 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                } handlerSetNewData.sendEmptyMessage(0);
+                }
+                handlerSetNewData.sendEmptyMessage(0);
             }
         });
         thread.start();
     }
-    private Handler handlerSetNewData = new Handler()
-    {
+
+    private Handler handlerSetNewData = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             setData(id);
@@ -650,8 +610,8 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
             ln4.setBackgroundColor(getResources().getColor(R.color.white));
         }
     };
-    public void clearError()
-    {
+
+    public void clearError() {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -659,13 +619,14 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
                     sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                } handlerClearError.sendEmptyMessage(0);
+                }
+                handlerClearError.sendEmptyMessage(0);
             }
         });
         thread.start();
     }
-    private Handler handlerClearError = new Handler()
-    {
+
+    private Handler handlerClearError = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             ln1.setBackgroundColor(getResources().getColor(R.color.white));
@@ -674,6 +635,7 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
             ln4.setBackgroundColor(getResources().getColor(R.color.white));
         }
     };
+
     @Override
     protected void onPause() {
         if (textToSpeech != null) {
@@ -682,6 +644,7 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
         }
         super.onPause();
     }
+
     public static int rand(int min, int max) {
         try {
             Random rn = new Random();
@@ -693,4 +656,5 @@ public class PracticeChooseWord extends AppCompatActivity implements View.OnClic
             return -1;
         }
     }
+
 }

@@ -8,6 +8,7 @@
     android:weightSum="10"
     tools:context="com.app.esd.esd.Activity.LearningActivity">
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"

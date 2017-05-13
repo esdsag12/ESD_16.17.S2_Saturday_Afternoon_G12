@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BaseTransientBottomBar;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.SpannableString;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +45,9 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_read);
         init();
         initData();
@@ -81,7 +81,7 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
     }
 
     public void initData() {
-        listTest.add(new String("i love you?"));
+        listTest.add(new String("i love you"));
         listTest.add(new String("sit down please"));
         listTest.add(new String("i don't know how to do this"));
         listTest.add(new String("sheet shit ship sheep"));

@@ -9,4 +9,7 @@
     <color name="error">#ff1744</color>
     <color name="vowel">#f27439</color>
     <color name="black">#000000</color>
+    <color name="green">#1aaf1a</color>
+    <color name="drarkorange">#ce7211</color>
+    <color name="blue">#2499e2</color>
 </resources>

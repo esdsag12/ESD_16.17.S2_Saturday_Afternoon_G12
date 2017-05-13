@@ -11,6 +11,7 @@
     <color name="black">#000000</color>
     <color name="green">#1aaf1a</color>
     <color name="drarkorange">#ce7211</color>
-    <color name="blue">#2499e2</color>
+    <color name="blue">#4BB9EC</color>
     <color name="colorGroup">#FFD788</color>
+    <color name="colorBtnPager">#00C37A</color>
     </resources>

@@ -76,6 +76,7 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
 //                    new OxfordPronunciationService(this).execute(words[i].trim());
 //                }
 //
+
 //                break;
 //            case R.id.btn_practice_read:
 //                Intent i2 = new Intent(this, PracticeRead.class);

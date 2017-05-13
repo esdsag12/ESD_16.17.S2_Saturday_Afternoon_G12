@@ -32,7 +32,8 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     private LinearLayout ln1, ln2, ln3, ln4;
     private int id;
     HashMap<String, String> map;
-
+    private int stt;
+    private int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,8 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         ln4 = (LinearLayout) findViewById(R.id.ln4);
         imgSpeak = (ImageView) findViewById(R.id.imgSpeak);
         map = new HashMap<String, String>();
+        stt=0;
+        score=0;
     }
 
     public void setEventClick() {
@@ -69,11 +72,10 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     }
 
     public void setDataList() {
-        string1 = new String[]{"sheep (n)", "bean (n)", "Vietnamese (n)", "see (v)",
-                "eat (v)", "agree (v)", "complete (v)", "receive (v)", "believe (v)"};
-        string2 = new String[]{"king (n)", "river (n)", "winter (n)", "prison (n)",
-                "picnic (n)", "biscuit (n)", "physics (n)", "which (pron)", "sing (v)",
-                "give (v)", "listen (v)"};
+        string1 = new String[]{"eat", "seat", "teen", "sheep",
+                "been"};
+        string2 = new String[]{"it", "sit", "tin", "ship",
+                "bin"};
         string3 = new String[]{"end (n)", "west (n)", "neck (n)", "leg (n)",
                 "America (n)", "fell (v)", "said (v)", "expect (v)", "heavy (adj)"};
         string4 = new String[]{"pan (n)", "map (n)", "bank (n)", "stamp (n)",
@@ -136,405 +138,257 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     }
 
     public void setData(int i) {
-        if (i == 1 || i == 2) {
-            if (i == 1) {
-                text = string1[rand(0, string1.length - 1)].split(" ");
-            } else {
-                text = string2[rand(0, string2.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string1[rand(0, string1.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+        if (i == 1 || i == 2 ) {
+            if(stt<string1.length) {
+                if (i == 1) {
+                    text = string1[stt].split(" ");
+                } else {
+                    text = string2[stt].split(" ");
                 }
-                text = string2[rand(0, string2.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string1[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string2[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string2[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string1[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string1[rand(0, string1.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string2[rand(0, string2.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv1.setText("");
+                tv2.setText("");
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 3 || i == 4) {
-            if (i == 3) {
-                text = string3[rand(0, string3.length - 1)].split(" ");
-            } else {
-                text = string4[rand(0, string4.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string3[rand(0, string3.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string3.length) {
+                if (i == 3) {
+                    text = string3[stt].split(" ");
+                } else {
+                    text = string4[stt].split(" ");
                 }
-                text = string4[rand(0, string4.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string3[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string4[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string4[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string3[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string3[rand(0, string3.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string4[rand(0, string4.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 5 || i == 6) {
-            if (i == 5) {
-                text = string5[rand(0, string5.length - 1)].split(" ");
-            } else {
-                text = string6[rand(0, string6.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string5[rand(0, string5.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string5.length) {
+                if (i == 5) {
+                    text = string5[stt].split(" ");
+                } else {
+                    text = string6[stt].split(" ");
                 }
-                text = string6[rand(0, string6.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string5[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string6[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string6[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string5[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string5[rand(0, string5.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string6[rand(0, string6.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 7 || i == 8) {
-            if (i == 7) {
-                text = string7[rand(0, string7.length - 1)].split(" ");
-            } else {
-                text = string8[rand(0, string8.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string7[rand(0, string7.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string1.length) {
+                if (i == 7) {
+                    text = string7[stt].split(" ");
+                } else {
+                    text = string8[stt].split(" ");
                 }
-                text = string8[rand(0, string8.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string7[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string8[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string8[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string7[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string7[rand(0, string7.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string8[rand(0, string8.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 9 || i == 10) {
-            if (i == 9) {
-                text = string9[rand(0, string9.length - 1)].split(" ");
-            } else {
-                text = string10[rand(0, string10.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string9[rand(0, string9.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string9.length) {
+                if (i == 9) {
+                    text = string9[stt].split(" ");
+                } else {
+                    text = string10[stt].split(" ");
                 }
-                text = string10[rand(0, string10.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string9[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string10[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string10[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string9[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string9[rand(0, string9.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string10[rand(0, string10.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 11 || i == 12) {
-            if (i == 11) {
-                text = string11[rand(0, string11.length - 1)].split(" ");
-            } else {
-                text = string12[rand(0, string12.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string11[rand(0, string11.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string11.length) {
+                if (i == 11) {
+                    text = string11[stt].split(" ");
+                } else {
+                    text = string12[stt].split(" ");
                 }
-                text = string12[rand(0, string12.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string11[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string12[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string12[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string11[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string11[rand(0, string11.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string12[rand(0, string12.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 13 || i == 14) {
-            if (i == 13) {
-                text = string13[rand(0, string13.length - 1)].split(" ");
-            } else {
-                text = string14[rand(0, string14.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string13[rand(0, string13.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string13.length) {
+                if (i == 13) {
+                    text = string13[stt].split(" ");
+                } else {
+                    text = string14[stt].split(" ");
                 }
-                text = string14[rand(0, string14.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string13[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string14[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string14[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string13[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string13[rand(0, string13.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string14[rand(0, string14.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 15 || i == 16) {
-            if (i == 15) {
-                text = string15[rand(0, string15.length - 1)].split(" ");
-            } else {
-                text = string16[rand(0, string16.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string15[rand(0, string15.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string15.length) {
+                if (i == 15) {
+                    text = string15[stt].split(" ");
+                } else {
+                    text = string16[stt].split(" ");
                 }
-                text = string16[rand(0, string16.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string15[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string16[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string16[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string15[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string15[rand(0, string15.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string16[rand(0, string16.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 17 || i == 18) {
-            if (i == 17) {
-                text = string17[rand(0, string17.length - 1)].split(" ");
-            } else {
-                text = string18[rand(0, string18.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string17[rand(0, string17.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string1.length) {
+                if (i == 1) {
+                    text = string1[stt].split(" ");
+                } else {
+                    text = string2[stt].split(" ");
                 }
-                text = string18[rand(0, string18.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string1[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string2[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string2[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string1[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string17[rand(0, string17.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string18[rand(0, string18.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         } else if (i == 19 || i == 20) {
-            if (i == 19) {
-                text = string19[rand(0, string19.length - 1)].split(" ");
-            } else {
-                text = string20[rand(0, string20.length - 1)].split(" ");
-            }
-            strExample = text[0];
-
-            for (int u = 0; u < 100; u++) {
-                text = string19[rand(0, string19.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv1.setText(text[0]);
+            if(stt<string1.length) {
+                if (i == 1) {
+                    text = string1[stt].split(" ");
+                } else {
+                    text = string2[stt].split(" ");
                 }
-                text = string20[rand(0, string20.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
+                strExample = text[0];
+                if (rand(0, 1) == 0) {
+                    text = string1[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string2[stt].split(" ");
+                    tv2.setText(text[0]);
+                } else {
+                    text = string2[stt].split(" ");
+                    tv1.setText(text[0]);
+                    text = string1[stt].split(" ");
                     tv2.setText(text[0]);
                 }
-                text = string19[rand(0, string19.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv3.setText(text[0]);
-                }
-                text = string20[rand(0, string20.length - 1)].split(" ");
-                if (!text[0].equals(strExample)) {
-                    tv4.setText(text[0]);
-                }
-                int position = rand(0, 3);
-                if (position == 0) {
-                    tv1.setText(strExample);
-                } else if (position == 1) {
-                    tv2.setText(strExample);
-                } else if (position == 2) {
-                    tv3.setText(strExample);
-                } else if (position == 3) {
-                    tv4.setText(strExample);
-                }
-                if (!tv1.getText().toString().equals("") && !tv2.getText().toString().equals("")
-                        && !tv3.getText().toString().equals("") && !tv4.getText().toString().equals("")) {
-                    break;
-                }
+            }
+            else
+            {
+                tv3.setText(String.valueOf(score));
+                score=0;
             }
         }
     }
@@ -603,11 +457,11 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     private Handler handlerSetNewData = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            stt++;
             setData(id);
+            score++;
             ln1.setBackgroundColor(getResources().getColor(R.color.white));
             ln2.setBackgroundColor(getResources().getColor(R.color.white));
-            ln3.setBackgroundColor(getResources().getColor(R.color.white));
-            ln4.setBackgroundColor(getResources().getColor(R.color.white));
         }
     };
 
@@ -629,10 +483,10 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     private Handler handlerClearError = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            stt++;
+            setData(id);
             ln1.setBackgroundColor(getResources().getColor(R.color.white));
             ln2.setBackgroundColor(getResources().getColor(R.color.white));
-            ln3.setBackgroundColor(getResources().getColor(R.color.white));
-            ln4.setBackgroundColor(getResources().getColor(R.color.white));
         }
     };
 

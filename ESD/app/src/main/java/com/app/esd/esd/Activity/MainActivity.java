@@ -58,10 +58,7 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
         if (length == totalLength) {
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
-
-
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -88,6 +85,4 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
                 startActivity(intent);
         }
     }
-
-
 }

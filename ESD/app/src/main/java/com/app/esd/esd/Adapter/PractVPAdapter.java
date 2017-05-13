@@ -103,7 +103,7 @@ public class PractVPAdapter extends PagerAdapter {
 
         KEYBOARD("keyboard", R.layout.layout_pager_keyboard),
         SPEAKING("speaking", R.layout.layout_pager_speak),
-        CHOOSE("quick test", R.layout.layout_pager_choose);
+        CHOOSE("listening", R.layout.layout_pager_choose);
 //        BLUE(R.layout.view_blue),
 //        ORANGE(R.layout.view_orange);
 

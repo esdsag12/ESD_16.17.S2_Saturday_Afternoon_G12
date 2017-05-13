@@ -1,6 +1,7 @@
 package com.app.esd.esd.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.app.esd.esd.Adapter.PractVPAdapter;
 import com.app.esd.esd.R;
@@ -37,7 +37,24 @@ public class PracticeActivity extends BaseActivity {
         pagerAdapter.setOnBtnItemClickListener(new PractVPAdapter.OnBtnItemClickListener() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(PracticeActivity.this, position + "", Toast.LENGTH_SHORT).show();
+                switch (position) {
+                    case 0:
+                        Intent open_keyboard = new Intent(PracticeActivity.this,
+                                Keyboard.class);
+                        startActivity(open_keyboard);
+                        break;
+                    case 1:
+                        Intent open_speak = new Intent(PracticeActivity.this,
+                                PracticeRead.class);
+                        startActivity(open_speak);
+                        break;
+                    case 2:
+                        Intent open_listen = new Intent(PracticeActivity.this,
+                                PracticeChooseWord.class);
+                        startActivity(open_listen);
+                        break;
+
+                }
             }
         });
 //        viewPager.setPageMargin(300);

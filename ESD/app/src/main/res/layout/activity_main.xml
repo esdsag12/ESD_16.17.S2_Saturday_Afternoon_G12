@@ -5,44 +5,146 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="3"
     tools:context="com.app.esd.esd.Activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/lnLearning"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/ripple_learning"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/imgv_learn_main"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/openbook"
+            android:transitionName="icLearing" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="learning"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnpracticing"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/ripple_practicing"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/imgv_pract_main"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/desk"
+            android:transitionName="icPract" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="practicing"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lntesting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/ripple_testing"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/imgv_test_main"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/test"
+            android:transitionName="icTest" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="test"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <EditText
+            android:id="@+id/edt_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="go cum tu"
-            android:id="@+id/edt_text"/>
+            android:visibility="gone" />
+
         <Button
+            android:id="@+id/btn_dich"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dich"
-            android:id="@+id/btn_dich"/>
+            android:visibility="gone" />
+
         <EditText
+            android:id="@+id/edt_so"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_so"
+            android:hint="go so"
             android:inputType="number"
-            android:hint="go so"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_doc"
-            android:text="doc am vi"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_practice_read"
-            android:text="Luyen tap doc"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_keyboard"
-            android:text="keyboard"/>
+            android:visibility="gone" />
 
+        <Button
+            android:id="@+id/btn_doc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="doc am vi"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_practice_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Luyen tap doc"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_keyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keyboard"
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -50,17 +152,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_margin="50dp"
         android:background="@color/colorPrimary"
-        android:id="@+id/lnLearning">
+        android:padding="10dp"
+        android:visibility="gone">
+
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="LEARNING"
-            android:textStyle="bold"
+            android:layout_margin="10dp"
             android:gravity="center"
+            android:text="LEARNING"
             android:textColor="@color/white"
-            android:layout_margin="10dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

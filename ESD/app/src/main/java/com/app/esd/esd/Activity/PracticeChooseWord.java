@@ -430,6 +430,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 } else {
                     ln3.setBackgroundColor(getResources().getColor(R.color.error));
                     clearError();
+
                 }
                 break;
             case R.id.ln4:

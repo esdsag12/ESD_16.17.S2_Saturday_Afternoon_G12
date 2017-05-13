@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ecf0f1">
+    android:layout_height="wrap_content"
+    android:background="@drawable/ripple_group"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="16dp">
 
     <TextView
-        android:textColor="#16a085"
-        android:id="@+id/tvHeader"
+        android:id="@+id/txtv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:lines="1"
+        android:maxLines="1"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp" />
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:maxLines="1"
+            android:textColor="#5D647F"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvVolwels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:maxLines="1"
+            android:textColor="#5D647F" />
+    </LinearLayout>
+
+
+</LinearLayout>

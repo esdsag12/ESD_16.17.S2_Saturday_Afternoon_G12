@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -62,6 +63,7 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -85,21 +87,25 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
 //                break;
             case R.id.lnLearning:
                 Intent intent_learning = new Intent(MainActivity.this, LearningActivity.class);
+                Pair<View, String> pair_learnIC =
+                        new Pair<>(findViewById(R.id.imgv_learn_main), "icLearing"),
+                        pair_learnLn =
+                                new Pair<>(findViewById(R.id.lnLearning), "lnLearning");
                 ActivityOptionsCompat learningOption =
                         ActivityOptionsCompat
-                                .makeSceneTransitionAnimation(this,
-                                        findViewById(R.id.imgv_learn_main),
-                                        "icLearing");
+                                .makeSceneTransitionAnimation(this, pair_learnIC, pair_learnLn);
                 intent_learning.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent_learning, learningOption.toBundle());
                 break;
             case R.id.lnpracticing:
                 Intent intent_practicing = new Intent(MainActivity.this, PracticeActivity.class);
+                Pair<View, String> pair_practIC =
+                        new Pair<>(findViewById(R.id.imgv_pract_main), "icPract"),
+                        pair_practLn =
+                                new Pair<>(findViewById(R.id.lnpracticing), "lnPract");
                 ActivityOptionsCompat practOption =
                         ActivityOptionsCompat
-                                .makeSceneTransitionAnimation(this,
-                                        findViewById(R.id.imgv_pract_main),
-                                        "icPract");
+                                .makeSceneTransitionAnimation(this, pair_practIC, pair_practLn);
                 intent_practicing.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent_practicing, practOption.toBundle());
                 break;
@@ -107,11 +113,13 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
                 Intent intent_testing = new Intent(MainActivity.this,
                         TestingActivity.class);
                 intent_testing.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Pair<View, String> pair_testIC =
+                        new Pair<>(findViewById(R.id.imgv_test_main), "icTest"),
+                        pair_testLn =
+                                new Pair<>(findViewById(R.id.lntesting), "lnTest");
                 ActivityOptionsCompat testOption =
                         ActivityOptionsCompat
-                                .makeSceneTransitionAnimation(this,
-                                        findViewById(R.id.imgv_test_main),
-                                        "icTest");
+                                .makeSceneTransitionAnimation(this, pair_testIC, pair_testLn);
                 startActivity(intent_testing, testOption.toBundle());
                 break;
         }

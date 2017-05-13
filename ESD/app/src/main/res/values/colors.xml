@@ -12,4 +12,5 @@
     <color name="green">#1aaf1a</color>
     <color name="drarkorange">#ce7211</color>
     <color name="blue">#2499e2</color>
-</resources>
+    <color name="colorGroup">#FFD788</color>
+    </resources>

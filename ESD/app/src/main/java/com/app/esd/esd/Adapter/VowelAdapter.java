@@ -24,9 +24,9 @@ public class VowelAdapter extends BaseExpandableListAdapter {
     private HashMap<String, List<Vowel>> listVowel;
 
     public VowelAdapter(Context context, List<String> listType, HashMap<String, List<Vowel>> listVowel) {
-        this.context=context;
-        this.listType=listType;
-        this.listVowel=listVowel;
+        this.context = context;
+        this.listType = listType;
+        this.listVowel = listVowel;
     }
 
     @Override
@@ -72,6 +72,23 @@ public class VowelAdapter extends BaseExpandableListAdapter {
         }
         TextView tvHeader = (TextView) convertView.findViewById(R.id.tvHeader);
         tvHeader.setText(listType.get(groupPosition));
+        TextView txtvNumber = (TextView) convertView.findViewById(R.id.txtv_number);
+        txtvNumber.setText(groupPosition + 1 + "");
+        TextView txtvVowels = (TextView) convertView.findViewById(R.id.tvVolwels);
+        switch (groupPosition) {
+            case 0:
+                txtvVowels.setText("ɪ - e - æ - ʌ - ɒ - ʊ - ə");
+                break;
+            case 1:
+                txtvVowels.setText("i - ɑ - ɔ - u - ɜ");
+                break;
+            case 2:
+                txtvVowels.setText("eɪ - aɪ - ɔɪ - aʊ - əʊ - ɪə - eə - ʊə");
+                break;
+            case 3:
+                txtvVowels.setText("p - b - t - d - k - g - s - z - ʃ - ʒ - tʃ ...");
+                break;
+        }
         return convertView;
     }
 
@@ -79,7 +96,7 @@ public class VowelAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater li = LayoutInflater.from(context);
-            convertView = li.inflate(R.layout.item_group, parent, false);
+            convertView = li.inflate(R.layout.item_expand, parent, false);
         }
 
         TextView tvVowel = (TextView) convertView.findViewById(R.id.tvVowel);

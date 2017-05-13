@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="3"
+    android:transitionName="bgLearning"
     tools:context="com.app.esd.esd.Activity.MainActivity">
 
     <LinearLayout
@@ -16,6 +17,7 @@
         android:background="@drawable/ripple_learning"
         android:clickable="true"
         android:gravity="center"
+        android:transitionName="lnLearning"
         android:orientation="vertical"
         android:weightSum="2">
 
@@ -42,6 +44,7 @@
         android:id="@+id/lnpracticing"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:transitionName="lnPract"
         android:layout_weight="1"
         android:background="@drawable/ripple_practicing"
         android:clickable="true"
@@ -76,6 +79,7 @@
         android:background="@drawable/ripple_testing"
         android:clickable="true"
         android:gravity="center"
+        android:transitionName="lnTest"
         android:orientation="vertical"
         android:weightSum="2">
 

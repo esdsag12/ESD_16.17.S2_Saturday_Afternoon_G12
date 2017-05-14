@@ -11,8 +11,10 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
+        android:id="@+id/imgv_learn"
+        android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
         android:fitsSystemWindows="true"

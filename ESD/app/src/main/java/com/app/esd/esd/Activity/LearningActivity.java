@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 
 import com.app.esd.esd.Adapter.VowelAdapter;
 import com.app.esd.esd.Model.Vowel;
@@ -22,6 +23,7 @@ public class LearningActivity extends AppCompatActivity {
     private static final String TAG = "LearningActivity";
     private ExpandableListView eplVowel;
     private HashMap<String, List<Vowel>> mData;
+    private ImageView imgv_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,13 @@ public class LearningActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_learning);
-
+        imgv_icon = (ImageView) findViewById(R.id.imgv_learn);
+        imgv_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         eplVowel = (ExpandableListView) findViewById(R.id.eplVowel);
 
         DisplayMetrics metrics = new DisplayMetrics();

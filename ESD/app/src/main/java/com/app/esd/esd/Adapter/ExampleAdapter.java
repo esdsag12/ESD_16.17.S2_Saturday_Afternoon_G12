@@ -78,9 +78,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.Recycler
 
         private TextView tvExample;
         private ItemClickListener clickListener;
+
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-
             tvExample = (TextView) itemView.findViewById(R.id.tvExample);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);

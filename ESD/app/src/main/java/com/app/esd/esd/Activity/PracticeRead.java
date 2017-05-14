@@ -60,7 +60,6 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle("Practice Reading");
-
     }
 
     private void init() {
@@ -172,7 +171,7 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
         String unCorrectColorStart = "<font COLOR=\'RED\'><b>";
         String lackColorStart = "<font COLOR=\'YELLOW\'><b>";
         String overColorStart = "<font COLOR=\'BLUE\'><b>";
-        int isWrongAll=-1;
+        int isWrongAll = -1;
         if (listPronun.length > listPronunCorrect.length) {
             for (int i = 0; i < listPronunCorrect.length; i++) {
                 if (listPronun[i].trim().equals(listPronunCorrect[i])) {
@@ -193,14 +192,14 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
                     }
                     isWrongAll++;
                 }
-                if(isWrongAll==listPronunCorrect.length-1){
-                    for (int j = i+1; j < listWord.length; j++) {
+                if (isWrongAll == listPronunCorrect.length - 1) {
+                    for (int j = i + 1; j < listWord.length; j++) {
                         finalPronunciation += " " + unCorrectColorStart + listPronun[j] + colorEnd;
                         finalString += " " + unCorrectColorStart + listWord[j] + colorEnd;
                     }
-                }else{
+                } else {
                     if (i == listPronunCorrect.length - 1) {
-                        for (int j = i+1; j < listWord.length; j++) {
+                        for (int j = i + 1; j < listWord.length; j++) {
                             finalPronunciation += " " + overColorStart + listPronun[j] + colorEnd;
                             finalString += " " + overColorStart + listWord[j] + colorEnd;
                         }
@@ -216,7 +215,7 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
                         finalString += correctColorStart + listWord[i] + colorEnd;
                     } else {
                         finalPronunciation += " " + correctColorStart + listPronun[i] + colorEnd;
-                        finalString +=" "+ correctColorStart + listWord[i] + colorEnd;
+                        finalString += " " + correctColorStart + listWord[i] + colorEnd;
                     }
                 } else {
                     if (finalPronunciation == "") {
@@ -224,16 +223,16 @@ public class PracticeRead extends BaseActivity implements View.OnClickListener, 
                         finalString += unCorrectColorStart + listWord[i] + colorEnd;
                     } else {
                         finalPronunciation += " " + unCorrectColorStart + listPronun[i] + colorEnd;
-                        finalString +=" "+ unCorrectColorStart + listWord[i] + colorEnd;
+                        finalString += " " + unCorrectColorStart + listWord[i] + colorEnd;
                     }
                     isWrongAll++;
                 }
-                if(isWrongAll==listPronun.length-1){
-                    for (int j = i+1; j < listPronunCorrect.length; j++) {
+                if (isWrongAll == listPronun.length - 1) {
+                    for (int j = i + 1; j < listPronunCorrect.length; j++) {
                         finalPronunciation += " " + unCorrectColorStart + listPronunCorrect[j] + colorEnd;
                         finalString += " " + unCorrectColorStart + listWordCorrect[j] + colorEnd;
                     }
-                }else {
+                } else {
                     if (i == listPronun.length - 1 && listPronun.length < listPronunCorrect.length) {
                         for (int j = i + 1; j < listPronunCorrect.length; j++) {
                             finalPronunciation += " " + lackColorStart + listPronunCorrect[j] + colorEnd;

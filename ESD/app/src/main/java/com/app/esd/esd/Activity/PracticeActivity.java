@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.app.esd.esd.Adapter.PractVPAdapter;
 import com.app.esd.esd.R;
@@ -21,6 +22,7 @@ public class PracticeActivity extends BaseActivity {
     ViewPager viewPager;
     View view_readpract, view_chooseword, view_keyboard;
     Button btn_read;
+    ImageView imgv_icon;
     PractVPAdapter pagerAdapter;
 
     @Override
@@ -30,6 +32,13 @@ public class PracticeActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_practice);
+        imgv_icon = (ImageView) findViewById(R.id.imgv_pract);
+        imgv_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         viewPager = (ViewPager) findViewById(R.id.viewpager_pract);
         pagerAdapter = new PractVPAdapter(this);
         viewPager.setAdapter(pagerAdapter);

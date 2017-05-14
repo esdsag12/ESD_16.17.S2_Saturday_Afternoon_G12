@@ -15,10 +15,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -42,7 +40,6 @@ import java.util.List;
 public class DetailVowelActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener, OxfordPronuncationListener {
     private TextView tvContent;
     private String vowel;
-    private Toolbar toolbar;
     private ImageView imgSpeak, imgSpeakDialog, img;
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private int id;
@@ -78,14 +75,12 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
             id = extras.getInt("id");
         }
         init();
-        setToolbar();
         setDataList();
         setData(id);
         setEventClick();
     }
 
     public void init() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         tvContent = (TextView) findViewById(R.id.tvContent);
         imgSpeak = (ImageView) findViewById(R.id.imgSpeak);
         img = (ImageView) findViewById(R.id.img);
@@ -95,12 +90,6 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         fabPractice = (FloatingActionButton) findViewById(R.id.fabPractice);
     }
 
-    public void setToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(vowel);
-    }
 
     public void setEventClick() {
         imgSpeak.setOnClickListener(this);
@@ -257,14 +246,6 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         list20 = Arrays.asList(string20);
     }
 
-    @Override
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void speakVowel(int i) {
         if (i < 45 && i > 0) {

@@ -1,5 +1,6 @@
 package com.app.esd.esd.Adapter;
 
+import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,21 @@ import com.app.esd.esd.R;
  */
 
 public class Rv_VowelPair_Adapter extends RecyclerView.Adapter<Rv_VowelPair_Adapter.ViewHolder> {
+    private Activity activity;
+
+    public Rv_VowelPair_Adapter(Activity activity) {
+        this.activity = activity;
+    }
+
+    public interface OnItemClickListener {
+        void ItemClick(Activity activity, int ID);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -22,10 +38,16 @@ public class Rv_VowelPair_Adapter extends RecyclerView.Adapter<Rv_VowelPair_Adap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        VowelPair vowelPair1 = VowelPair.values()[position];
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final VowelPair vowelPair1 = VowelPair.values()[position];
         holder.tv_vowel1.setText(vowelPair1.getVeowel());
         holder.tv_word1.setText(vowelPair1.getWord());
+        holder.cardv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListener.ItemClick(activity, position);
+            }
+        });
     }
 
     @Override

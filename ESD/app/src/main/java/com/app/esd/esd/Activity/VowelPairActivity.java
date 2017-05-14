@@ -1,6 +1,8 @@
 package com.app.esd.esd.Activity;
 
 import android.animation.Animator;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -31,8 +33,15 @@ public class VowelPairActivity extends AppCompatActivity {
         rv_vowel = (RecyclerView) findViewById(R.id.rv_vowelpair);
         rvLm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         rv_vowel.setLayoutManager(rvLm);
-        rv_adapter = new Rv_VowelPair_Adapter();
+        rv_adapter = new Rv_VowelPair_Adapter(this);
         rv_vowel.setAdapter(rv_adapter);
+        rv_adapter.setOnItemClickListener(new Rv_VowelPair_Adapter.OnItemClickListener() {
+            @Override
+            public void ItemClick(Activity activity, int ID) {
+                Intent intent_open = new Intent(activity, PracticeChooseWord.class);
+                startActivity(intent_open);
+            }
+        });
     }
 
     @Override

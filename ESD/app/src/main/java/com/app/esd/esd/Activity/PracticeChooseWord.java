@@ -77,26 +77,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     }
 
     public void setDataList() {
-        string1 = new String[]{"eat", "seat", "teen", "sheep",
-                "been"};
-        string2 = new String[]{"it", "sit", "tin", "ship",
-                "bin"};
-        string3 = new String[]{"end (n)", "west (n)", "neck (n)", "leg (n)",
-                "America (n)", "fell (v)", "said (v)", "expect (v)", "heavy (adj)"};
-        string4 = new String[]{"pan (n)", "map (n)", "bank (n)", "stamp (n)",
-                "apple (n)", "captain (n)", "factory (n)", "manufacture (v)", "narrow (adj)"};
-        string5 = new String[]{"sun (n)", "blood (n)", "number (n)", "summer (n)",
-                "mother (n)", "cousin (n)", "country (n)", "come (v)", "touch (v)", "cover (v)"};
-        string6 = new String[]{"car (n)", "bar (n)", "star (n)", "cart (n)",
-                "father (n)", "start (v)", "carve (v)", "dark (adj)", "hard (adv)"};
-        string7 = new String[]{"clock (n)", "cross (n)", "coffee (n)", "chocolate (n)",
-                "bottle (n)", "hospital (n)", "wash (v)", "possible (adj)"};
-        string8 = new String[]{"law (n)", "lawn (n)", "course (n)", "fault (n)",
-                "walk (v)", "thought (v)", "taught (v)", "small (adj)", "important (adj)"};
-        string9 = new String[]{"room (n)", "pool (n)", "flute (n)", "glue (n)",
-                "group (n)", "music (n)", "chew (v)", "move (v)", "suitable (adj)"};
-        string10 = new String[]{"boClose (n)", "wool (n)", "woman (n)", "childhood (n)",
-                "neighbourhood", "good (adj)", "full (adj)", "would (modal)", "should (modal)"};
+        string1 = new String[]{"eat", "seat", "teen", "sheep", "been"};
+        string2 = new String[]{"it", "sit", "tin", "ship", "bin"};
+        string3 = new String[]{"men", "pen", "met", "beg"};
+        string4 = new String[]{"man", "pan", "mat", "bag"};
+        string5 = new String[]{"cup", "hut", "cut", "bun", "much"};
+        string6 = new String[]{"carp", "heart", "cart", "barn", "march"};
+        string7 = new String[]{"pot", "don", "cot", "shot"};
+        string8 = new String[]{"port", "dawn", "caught", "short"};
+        string9 = new String[]{"foot", "full", "wood", "look", "stood"};
+        string10 = new String[]{"food", "fool", "wooed", "luke", "stewed"};
         string11 = new String[]{"term (n)", "firm (n)", "bird (n)", "word (n)",
                 "burglar (n)", "journey (n)", "learn (v)", "dirty (adj)", "thirty (number)"};
         string12 = new String[]{"woman (n)", "mother (n)", "accept (v)", "answer (v)",

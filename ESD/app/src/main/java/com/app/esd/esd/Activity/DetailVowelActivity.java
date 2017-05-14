@@ -211,9 +211,9 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
                 "bottle (n)", "hospital (n)", "wash (v)", "possible (adj)"};
         string8 = new String[]{"law (n)", "lawn (n)", "course (n)", "fault (n)",
                 "walk (v)", "thought (v)", "taught (v)", "small (adj)", "important (adj)"};
-        string9 = new String[]{"room (n)", "pool (n)", "flute (n)", "glue (n)",
+        string10 = new String[]{"room (n)", "pool (n)", "flute (n)", "glue (n)",
                 "group (n)", "music (n)", "chew (v)", "move (v)", "suitable (adj)"};
-        string10 = new String[]{"boClose (n)", "wool (n)", "woman (n)", "childhood (n)",
+        string9 = new String[]{"book (n)", "wool (n)", "woman (n)", "childhood (n)",
                 "neighbourhood", "good (adj)", "full (adj)", "would (modal)", "should (modal)"};
         string11 = new String[]{"term (n)", "firm (n)", "bird (n)", "word (n)",
                 "burglar (n)", "journey (n)", "learn (v)", "dirty (adj)", "thirty (number)"};
@@ -313,12 +313,15 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onOxfordPronuncationListenerSuccess(OxfordObject oxfordObject) {
-        if (strExample == "") {
-            strExample += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
-        } else {
-            strExample += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+        try {
+            if (strExample == "") {
+                strExample += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+            } else {
+                strExample += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+            }
+            showDialogFilter(text[0], strExample);
         }
-        showDialogFilter(text[0], strExample);
+        catch (Exception e){}
     }
 
     public void speakExample(String example) {

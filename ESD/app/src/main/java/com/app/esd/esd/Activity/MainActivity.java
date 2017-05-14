@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +18,8 @@ import com.app.esd.esd.Interface.OxfordPronuncationListener;
 import com.app.esd.esd.Modals.ApiModals.OxfordObject;
 import com.app.esd.esd.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends BaseActivity implements OxfordPronuncationListener, View.OnClickListener {
@@ -26,6 +29,7 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
     int length = 0, totalLength = 0;
     private LinearLayout lnLearning, lnPracticing, lnTesting;
     public static TextToSpeech textToSpeech;
+    private Date date, date2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,8 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
         lnPracticing.setOnClickListener(this);
         lnTesting = (LinearLayout) findViewById(R.id.lntesting);
         lnTesting.setOnClickListener(this);
-
+        date = new Date(System.currentTimeMillis());
+        getDate();
     }
 
     @Override
@@ -124,5 +129,28 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
                 startActivity(intent_testing, testOption.toBundle());
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        date2 = new Date(System.currentTimeMillis());
+        long diff = date2.getTime() - date.getTime();
+        long diffSeconds = diff / 1000;
+        long diffMinutes = diff / (60 * 1000);
+        long diffHours = diff / (60 * 60 * 1000);
+        Log.i("date",String.valueOf(diffHours)+" "+String.valueOf(diffMinutes)+" "+String.valueOf(diffSeconds));
+    }
+    public void getDate()
+    {
+        //Tạo đối tượng date sẽ lấy date hiện tại
+        Date date = new Date();
+
+        //Muốn xuất Ngày/Tháng/Năm , ví dụ 12/04/2013
+        String strDateFormat = "dd/MM/yyyy";
+        //tạo đối tượng SimpleDateFormat;
+        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+        //gọi hàm format để lấy chuỗi ngày tháng năm đúng theo yêu cầu
+        Log.i("today",sdf.format(date));
     }
 }

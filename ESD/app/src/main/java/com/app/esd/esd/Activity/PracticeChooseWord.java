@@ -81,8 +81,8 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         string2 = new String[]{"it", "sit", "tin", "ship", "bin"};
         string3 = new String[]{"men", "pen", "met", "beg"};
         string4 = new String[]{"man", "pan", "mat", "bag"};
-        string5 = new String[]{"cup", "hut", "cut", "bun", "much"};
-        string6 = new String[]{"carp", "heart", "cart", "barn", "march"};
+        string5 = new String[]{"come","cup", "hut", "cut", "bun", "much"};
+        string6 = new String[]{"calm","carp", "heart", "cart", "barn", "march"};
         string7 = new String[]{"pot", "don", "cot", "shot"};
         string8 = new String[]{"port", "dawn", "caught", "short"};
         string9 = new String[]{"foot", "full", "wood", "look", "stood"};
@@ -133,9 +133,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     }
 
     public void setData(int i) {
-        if (i == 1 || i == 2 ) {
+        if (i == 0 ) {
             if(stt<string1.length) {
-                if (i == 1) {
+                if (rand(0,1) == 1) {
                     text = string1[stt].split(" ");
                 } else {
                     text = string2[stt].split(" ");
@@ -160,9 +160,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 tv3.setText(String.valueOf(score));
                 score=0;
             }
-        } else if (i == 3 || i == 4) {
+        } else if (i == 1) {
             if(stt<string3.length) {
-                if (i == 3) {
+                if (rand(3,4)==3) {
                     text = string3[stt].split(" ");
                 } else {
                     text = string4[stt].split(" ");
@@ -185,9 +185,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 tv3.setText(String.valueOf(score));
                 score=0;
             }
-        } else if (i == 5 || i == 6) {
+        } else if (i == 3) {
             if(stt<string5.length) {
-                if (i == 5) {
+                if (rand(5,6) == 5) {
                     text = string5[stt].split(" ");
                 } else {
                     text = string6[stt].split(" ");
@@ -235,9 +235,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 tv3.setText(String.valueOf(score));
                 score=0;
             }
-        } else if (i == 9 || i == 10) {
+        } else if (i == 2) {
             if(stt<string9.length) {
-                if (i == 9) {
+                if (rand(9,10) == 9) {
                     text = string9[stt].split(" ");
                 } else {
                     text = string10[stt].split(" ");

@@ -39,6 +39,7 @@ public class VowelPairActivity extends AppCompatActivity {
             @Override
             public void ItemClick(Activity activity, int ID) {
                 Intent intent_open = new Intent(activity, PracticeChooseWord.class);
+                intent_open.putExtra("id",ID);
                 startActivity(intent_open);
             }
         });

@@ -188,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
-                    android:text="Thừa"/>
+                    android:text="Thieu"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

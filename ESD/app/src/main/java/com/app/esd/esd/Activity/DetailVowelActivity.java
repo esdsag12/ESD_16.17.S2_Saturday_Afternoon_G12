@@ -294,15 +294,20 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onOxfordPronuncationListenerSuccess(OxfordObject oxfordObject) {
-        try {
-            if (strExample == "") {
-                strExample += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
-            } else {
-                strExample += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+        if(null == oxfordObject){
+            Toast.makeText(this, "Loi api, do st", Toast.LENGTH_SHORT).show();
+        }else{
+            try {
+                if (strExample == "") {
+                    strExample += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+                } else {
+                    strExample += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+                }
+                showDialogFilter(text[0], strExample);
             }
-            showDialogFilter(text[0], strExample);
+            catch (Exception e){}
         }
-        catch (Exception e){}
+
     }
 
     public void speakExample(String example) {

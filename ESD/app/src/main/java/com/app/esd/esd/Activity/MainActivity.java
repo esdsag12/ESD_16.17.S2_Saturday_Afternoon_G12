@@ -58,14 +58,18 @@ public class MainActivity extends BaseActivity implements OxfordPronuncationList
 
     @Override
     public void onOxfordPronuncationListenerSuccess(OxfordObject oxfordObject) {
-        if (text == "") {
-            text += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
-        } else {
-            text += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
-        }
-        length++;
-        if (length == totalLength) {
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        if(null == oxfordObject){
+            Toast.makeText(this, "Loi api, do st", Toast.LENGTH_SHORT).show();
+        }else {
+            if (text == "") {
+                text += oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+            } else {
+                text += " " + oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+            }
+            length++;
+            if (length == totalLength) {
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

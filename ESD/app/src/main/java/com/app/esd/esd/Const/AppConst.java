@@ -5,7 +5,7 @@ package com.app.esd.esd.Const;
  */
 
 public class AppConst {
-    public static String APP_ID = "b28120a5", API_KEY = "5c40051325cd5d929696027286e38482";
+    public static String APP_ID = "a27a9f3e", API_KEY = "5e9336e32e9b0df320f3d4d9895d0fa9";
     public static String[] LIST_SYMBOL = {"iː", " ɪ", " e", "æ", "ʌ", "ɑː", "ɒ", "ɔː", "ʊ", "uː"
             , "ɜː", "ə", "ei", "aɪ", "ɔɪ ", "aʊ", "əʊ", "ɪə", "eə", "ʊə", "p", "b"
             , "t", "d", "k", "g", "s", "z", "ʃ", "ʒ", "tʃ", "dʒ", "f", "v", "w", "j", "h"

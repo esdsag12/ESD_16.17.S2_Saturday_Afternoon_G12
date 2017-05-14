@@ -388,7 +388,11 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
 
     @Override
     public void onOxfordPronuncationListenerSuccess(OxfordObject oxfordObject) {
-        apiWord = oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+        if(null == oxfordObject){
+            Toast.makeText(this, "Loi api, do st", Toast.LENGTH_SHORT).show();
+        }else {
+            apiWord = oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+        }
         closeDialog();
     }
 }

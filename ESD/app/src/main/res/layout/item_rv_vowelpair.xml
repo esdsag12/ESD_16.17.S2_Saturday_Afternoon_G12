@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    app:cardCornerRadius="3.5dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackgroundBorderless"
+    app:cardCornerRadius="3.5dp"
     app:cardElevation="3.5dp">
 
     <LinearLayout
@@ -28,7 +28,6 @@
             android:maxLines="1"
             android:textAllCaps="false"
             android:textColor="@color/coloritemrvVowel"
-            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView

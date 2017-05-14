@@ -24,7 +24,8 @@
         <activity android:name=".Activity.PracticeChooseWord" />
         <activity android:name=".Activity.PracticeRead" />
         <activity android:name=".Activity.PracticeActivity" />
-        <activity android:name=".Activity.TestingActivity"></activity>
+        <activity android:name=".Activity.TestingActivity" />
+        <activity android:name=".Activity.VowelPairActivity"></activity>
     </application>
 
 </manifest>

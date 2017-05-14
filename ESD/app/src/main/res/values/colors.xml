@@ -14,4 +14,8 @@
     <color name="blue">#4BB9EC</color>
     <color name="colorGroup">#FFD788</color>
     <color name="colorBtnPager">#00C37A</color>
+    <color name="colorFabListen">#FFD05B</color>
+    <color name="coloritemrvVowel">#324A5E</color>
+    <color name="coloritemrvWord">#FF7058</color>
+    <color name="rippleitemrv">#84DBFF</color>
     </resources>

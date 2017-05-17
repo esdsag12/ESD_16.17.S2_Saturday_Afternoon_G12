@@ -94,18 +94,27 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         Animator animator = ViewAnimationUtils.createCircularReveal(cardv_result, cx, cy, 0, end);
         cardv_result.setVisibility(View.VISIBLE);
         ln4.setVisibility(View.VISIBLE);
+        if(id==0)
+        {
+            txtv_back.setVisibility(View.INVISIBLE);
+        }
+        else if (id >0)
+        {
+            txtv_back.setVisibility(View.VISIBLE);
+            txtv_next.setVisibility(View.VISIBLE);
+        }
         animator.start();
     }
 
     public void setDataList() {
         string1 = new String[]{"eat", "seat", "teen", "sheep", "been"};
         string2 = new String[]{"it", "sit", "tin", "ship", "bin"};
-        string3 = new String[]{"men", "pen", "met", "beg"};
-        string4 = new String[]{"man", "pan", "mat", "bag"};
-        string5 = new String[]{"come", "cup", "hut", "cut", "bun", "much"};
-        string6 = new String[]{"calm", "carp", "heart", "cart", "barn", "march"};
-        string7 = new String[]{"pot", "don", "cot", "shot"};
-        string8 = new String[]{"port", "dawn", "caught", "short"};
+        string3 = new String[]{"men", "pen", "met", "beg","set"};
+        string4 = new String[]{"man", "pan", "mat", "bag","sat"};
+        string5 = new String[]{"come", "cup", "hut", "cut", "bun"};
+        string6 = new String[]{"calm", "carp", "heart", "cart", "barn"};
+        string7 = new String[]{"pot", "don", "cot", "shot","spot"};
+        string8 = new String[]{"port", "dawn", "caught", "short","sport"};
         string9 = new String[]{"foot", "full", "wood", "look", "stood"};
         string10 = new String[]{"food", "fool", "wooed", "luke", "stewed"};
         string11 = new String[]{"term (n)", "firm (n)", "bird (n)", "word (n)",
@@ -228,9 +237,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 7 || i == 8) {
+        } else if (i==4 ) {
             if (stt < string1.length) {
-                if (i == 7) {
+                if (rand(7, 8) == 7) {
                     text = string7[stt].split(" ");
                 } else {
                     text = string8[stt].split(" ");
@@ -470,8 +479,8 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         @Override
         public void handleMessage(Message msg) {
             stt++;
-            setData(id);
             score++;
+            setData(id);
             ln1.setBackgroundColor(getResources().getColor(R.color.white));
             ln2.setBackgroundColor(getResources().getColor(R.color.white));
         }

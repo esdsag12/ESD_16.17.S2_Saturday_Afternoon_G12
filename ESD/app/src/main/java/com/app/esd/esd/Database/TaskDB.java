@@ -92,7 +92,7 @@ public class TaskDB extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<Session> getAlarms() {
+    public ArrayList<Session> getSession() {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String select = "SELECT * FROM " + Task.TABLE_NAME;

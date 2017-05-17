@@ -162,4 +162,173 @@
 \n-	Hơi tròn môi
 \n-	Phần âm /ʊ/ được phát âm dài và to hơn so với phần âm /ə/</string>
 
+    <string name="vowel21">Khi phát âm phụ âm /p/
+, các bạn cần:
+\n-	Dùng hai môi chặn luồng khí trong miệng, ngạc mềm nâng lên
+\n-	Bật mạnh luồng khí ra khỏi miệng
+\n-	Không làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel22">Phụ âm /b/
+ được phát âm tương tự như phụ âm /p/
+:
+\n-	Dùng hai môi chặn luồng khí trong miệng, ngạc mềm được nâng lên
+\n-	Bật luồng khí ra khỏi miệng (yếu hơn so với âm /p/
+)
+\n- Làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel23">Khi phát âm phụ âm /t/
+, các bạn cần:
+\n-	Đặt mặt lưỡi dưới nướu/lợi hàm trên để chặn luồng khí trong miệng, ngạc mềm được nâng lên
+\n-	Bật mạnh luồng khí ra khỏi miệng
+\n-	Không làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel24">Khi phát âm phụ âm /d/
+, các bạn cần:
+\n-	Đặt mặt lưỡi dưới nướu/lợi hàm trên để chặn luồng khí trong miệng, ngạc mềm được nâng lên
+\n-	Bật mạnh luồng khí ra khỏi miệng, nhưng không mạnh bằng âm /t/
+\n-	Làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel25">Khi phát âm phụ âm /k/
+, các bạn cần:
+\n-	Nâng phần sau của lưỡi lên chạm ngạc mềm để chặn luồng khí trong miệng
+\n-	Bật mạnh luồng khí ra khỏi miệng
+\n-	Không làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel26">Khi phát âm phụ âm /g/
+, các bạn cần:
+\n-	Nâng phần sau của lưỡi lên chạm ngạc mềm để chặn luồng khí trong miệng
+\n-	Bật luồng khí ra khỏi miệng (yếu hơn so với âm /k/)
+\n-	Làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel27">Khi phát âm phụ âm /s/
+, các bạn cần:
+\n-	Để mặt lưỡi chạm nhẹ vào lợi hàm trên, ngạc mềm nâng lên
+\n-	Đẩy luồng khí thoát ra giữa mặt lưỡi và lợi hàm trên sao cho các bạn nghe thấy tiếng luồng khí thoát ra
+\n-	Không làm rung dây thanh trong cổ họng</string>
+
+    <string name="vowel28">Khi phát âm phụ âm /z/
+:
+\n-	Các bạn để mặt lưỡi chạm nhẹ vào lợi hàm trên, ngạc mềm nâng lên
+\n-	Sau đó, đẩy luồng khí thoát ra giữa mặt lưỡi và lợi hàm trên sao cho các bạn nghe thấy tiếng luồng khí thoát ra (không mạnh bằng âm /s/)
+\n-	Làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel29">Khi phát âm phụ âm /ʃ/
+, các bạn cần:
+\n-	Để mặt lưỡi chạm nhẹ vào ngay sau lợi hàm trên, nâng cả phần trước của lưỡi lên cao, và nâng ngạc mềm chặn luồng khí trong miệng
+\n-	Sau đó, đẩy luồng khí thoát ra sao cho các bạn phải nghe thấy tiếng luồng khí thoát ra
+\n- Không làm rung dây thanh trong cổ họng khi phát âm</string>
+
+    <string name="vowel30">Tương tự như phụ âm /ʃ/
+, khi phát âm phụ âm /ʒ/
+, các bạn cần:
+\n-	Để mặt lưỡi chạm vào ngay sau lợi hàm trên, nâng cả phần trước của lưỡi lên
+\n-	Đẩy luồng khí thoát ra sao cho phải có tiếng luồng khí thoát ra (không mạnh bằng âm /ʃ/
+)
+\n- Chú ý làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel31">Khi phát âm phụ âm /tʃ/
+, các bạn cần:
+\n-	Nâng đầu lưỡi và mặt lưỡi chạm vào ngay sau lợi hàm trên, và nâng ngạc mềm chặn luồng khí trong miệng
+\n-	Vành lưỡi chạm nhẹ vào răng ở hai bên miệng
+\n-	Sau đó đẩy mạnh luồng khí thoát ra sao cho các bạn nghe thấy tiếng luồng khí thoát ra
+\n- Và không làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel32">Tương tự như phụ âm /tʃ/
+, khi phát âm phụ âm /dʒ/
+, các bạn cần:
+\n-	Nâng mặt lưỡi chạm vào ngay sau lợi hàm trên, nâng cả phần trước của lưỡi và nâng ngạc mềm chặn luồng khí trong miệng
+\n-	Vành lưỡi chạm nhẹ vào răng ở hai bên miệng
+\n-	Sau đó đẩy mạnh luồng khí ra sao cho các bạn nghe thấy tiếng luồng khí thoát ra
+\n- Dây thanh trong cổ họng có rung
+</string>
+
+    <string name="vowel33">Khi phát âm phụ âm /f/
+, các bạn cần:
+\n-	Để răng hàm trên chạm nhẹ vào môi dưới, ngạc mềm nâng lên
+\n-	Đẩy luồng khí thoát ra giữa hàm răng trên và môi dưới sao cho các bạn nghe thấy tiếng luồng khí thoát ra
+\n-	Không làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel34">Khi phát âm phụ âm /v/
+:
+\n-	Các bạn để răng hàm trên chạm nhẹ vào môi dưới
+\n-	Sau đó, các bạn đẩy luồng khí thoát ra giữa răng hàm trên và môi dưới sao cho các bạn nghe thấy tiếng luồng khí thoát ra nhưng không mạnh bằng âm /f/
+\n-	Làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel35">Khi phát âm phụ âm /w/
+:
+\n-	Cần để hai môi tạo thành hình tròn nhỏ, phần sau của lưỡi nâng hướng lên ngạc mềm chặn luồng khí trong miệng
+\n-	Sau đó đẩy luồng khí thoát ra
+\n-	Và làm rung dây thanh trong cổ họng
+</string>
+
+    <string name="vowel36">Khi phát âm phụ âm /j/
+, các bạn cần:
+\n-	Nâng phần trước của lưỡi lên gần ngạc cứng
+\n-	Đẩy luồng khí thoát ra giữa phần trước của lưỡi và ngạc cứng nhưng không có tiếng ma sát  của luồng khí (do khoảng cách giữa phần trước của lưỡi và ngạc cứng không quá gần)
+\n-	Làm rung dây thanh trong cổ họng
+</string>
+
+    <string name="vowel37">Khi phát âm phụ âm /h/
+, các bạn cần:
+\n-	Nâng ngạc mềm lên cao
+\n-	Sau đó đẩy luồng khí thoát ra giữa thanh môn (một khe nhỏ) trong cổ họng sao cho các bạn phải nghe thấy tiếng luồng khí thoát ra
+\n- Và không làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel38">Khi phát âm phụ âm /θ/
+, các bạn cần:
+\n-	Đặt đầu lưỡi ở giữa hai hàm răng, ngạc mềm được nâng lên
+\n-	Sau đó, đẩy luồng khí thoát ra giữa đầu lưỡi và hàm răng trên sao cho các bạn nghe được tiếng luồng khí thoát ra
+\n- Và không làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel39">Khi phát âm phụ âm /ð/
+, các bạn cần:
+\n-	Đặt đầu lưỡi ở giữa hai hàm răng
+\n-	Sau đó, đẩy luồng khí thoát ra giữa đầu lưỡi và răng hàm trên sao cho các bạn nghe thấy tiếng luồng khí thoát ra (không mạnh bằng âm /θ/
+)
+\n-	Chú ý làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel40">Khi phát âm phụ âm /m/
+, các bạn cần:
+\n-	Khép hai môi chặn luồng khí trong miệng
+\n-	Sau đó ngạc mềm hạ xuống, đẩy luồng khí thoát ra ngoài qua khoang mũi
+\n- Và làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel41">Khi phát âm phụ âm /n/
+, các bạn cần:
+\n-	Đặt mặt lưỡi chạm lợi hàm trên ngay sau răng cửa, hai bên lưỡi chạm răng bên thay vì khép hai môi chặn luồng khí như với phụ âm /m/
+\n-	Sau đó hạ ngạc mềm xuống để luồng khí thoát ra ngoài qua khoang mũi tương tự phụ âm /m/
+\n- Và làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel42">Khi phát âm phụ âm /ŋ/
+, các bạn cần:
+\n-	Nâng phần sau của lưỡi chặn luồng khí tại vị trí ngạc mềm
+\n-	Sau đó hạ ngạc mềm xuống để không khí thoát ra qua khoang mũi tương tự âm /n/
+\n- Và làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel43">Khi phát âm phụ âm /l/
+, các bạn cần :
+\n-	Đặt mặt lưỡi (hoặc đầu lưỡi) chạm lợi hàm trên (ngay sau răng cửa hàm trên), nâng ngạc mềm chặn luồng khí trong miệng
+\n-	Sau đó đẩy luồng khí thoát ra ngoài qua hai bên của lưỡi
+\n- Và làm rung dây thanh trong cổ họng khi phát âm
+</string>
+
+    <string name="vowel44">Khi phát âm phụ âm /r/
+, các bạn cần:
+\n-	Giữ đầu lưỡi uốn về phía sau lợi hàm trên nhưng không gần sát, nâng ngạc mềm giữ luồng khí trong miệng
+\n-	Vành lưỡi tiếp xúc với răng hàm của hàm trên ở hai bên miệng
+\n- Sau đó đẩy luồng khí thoát ra nhưng không có tiếng ma sát luồng khí thoát ra
+\n-	Và làm rung dây thanh trong cổ họng
+</string>
+
 </resources>

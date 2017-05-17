@@ -78,7 +78,8 @@ public class Rv_VowelPair_Adapter extends RecyclerView.Adapter<Rv_VowelPair_Adap
         VOWEL1("/I/ & /iː/", "Ship & Sheep"),
         VOWEL2("/e/ & /æ/", "Men & Man"),
         VOWEL3("/ʊ/ & /uː/", "Foot & Food"),
-        VOWEL4("/ʌ/ & /ɑː/", "Come & Calm");
+        VOWEL4("/ʌ/ & /ɑː/", "Come & Calm"),
+        VOWEL5("/ɒ/ & /ɔ:/", "Pot & Port");
         private String veowel;
         private String word;
 

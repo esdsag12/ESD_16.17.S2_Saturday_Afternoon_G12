@@ -45,9 +45,17 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
     private int id;
 
     private String[] string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12,
-            string13, string14, string15, string16, string17, string18, string19, string20;
+            string13, string14, string15, string16, string17, string18, string19, string20,
+            string21, string22, string23, string24, string25, string26, string27, string28,
+            string29, string30, string31, string32, string33, string34, string35, string36,
+            string37, string38, string39, string40, string41, string42, string43, string44;
     private List<String> list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15,
-            list16, list17, list18, list19, list20;
+            list16, list17, list18, list19, list20,
+    list21, list22, list23, list24, list25,
+    list26, list27, list28, list29, list30,
+    list31, list32, list33, list34, list35,
+    list36, list37, list38, list39, list40,
+    list41, list42, list43, list44;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView recyclerView;
     private ExampleAdapter exampleAdapter;
@@ -177,7 +185,104 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
             tvContent.setText(getResources().getString(R.string.vowel20));
             img.setImageResource(R.drawable.vowel20);
             exampleAdapter = new ExampleAdapter(this, list20);
+        }else if (i == 21) {
+            tvContent.setText(getResources().getString(R.string.vowel21));
+            img.setImageResource(R.drawable.vowel21);
+            exampleAdapter = new ExampleAdapter(this, list21);
+        }else if (i == 22) {
+            tvContent.setText(getResources().getString(R.string.vowel22));
+            img.setImageResource(R.drawable.vowel22);
+            exampleAdapter = new ExampleAdapter(this, list22);
+        }else if (i == 23) {
+            tvContent.setText(getResources().getString(R.string.vowel23));
+            img.setImageResource(R.drawable.vowel23);
+            exampleAdapter = new ExampleAdapter(this, list23);
+        }else if (i == 24) {
+            tvContent.setText(getResources().getString(R.string.vowel24));
+            img.setImageResource(R.drawable.vowel24);
+            exampleAdapter = new ExampleAdapter(this, list24);
+        }else if (i == 25) {
+            tvContent.setText(getResources().getString(R.string.vowel25));
+            img.setImageResource(R.drawable.vowel25);
+            exampleAdapter = new ExampleAdapter(this, list25);
+        }else if (i == 26) {
+            tvContent.setText(getResources().getString(R.string.vowel26));
+            img.setImageResource(R.drawable.vowel26);
+            exampleAdapter = new ExampleAdapter(this, list26);
+        }else if (i == 27) {
+            tvContent.setText(getResources().getString(R.string.vowel27));
+            img.setImageResource(R.drawable.vowel27);
+            exampleAdapter = new ExampleAdapter(this, list27);
+        }else if (i == 28) {
+            tvContent.setText(getResources().getString(R.string.vowel28));
+            img.setImageResource(R.drawable.vowel28);
+            exampleAdapter = new ExampleAdapter(this, list28);
+        }else if (i == 29) {
+            tvContent.setText(getResources().getString(R.string.vowel29));
+            img.setImageResource(R.drawable.vowel29);
+            exampleAdapter = new ExampleAdapter(this, list29);
+        }else if (i == 30) {
+            tvContent.setText(getResources().getString(R.string.vowel30));
+            img.setImageResource(R.drawable.vowel30);
+            exampleAdapter = new ExampleAdapter(this, list30);
+        }else if (i == 31) {
+            tvContent.setText(getResources().getString(R.string.vowel31));
+            img.setImageResource(R.drawable.vowel31);
+            exampleAdapter = new ExampleAdapter(this, list31);
+        }else if (i == 32) {
+            tvContent.setText(getResources().getString(R.string.vowel32));
+            img.setImageResource(R.drawable.vowel32);
+            exampleAdapter = new ExampleAdapter(this, list32);
+        }else if (i == 33) {
+            tvContent.setText(getResources().getString(R.string.vowel33));
+            img.setImageResource(R.drawable.vowel33);
+            exampleAdapter = new ExampleAdapter(this, list33);
+        }else if (i == 34) {
+            tvContent.setText(getResources().getString(R.string.vowel34));
+            img.setImageResource(R.drawable.vowel34);
+            exampleAdapter = new ExampleAdapter(this, list34);
+        }else if (i == 35) {
+            tvContent.setText(getResources().getString(R.string.vowel35));
+            img.setImageResource(R.drawable.vowel35);
+            exampleAdapter = new ExampleAdapter(this, list35);
+        }else if (i == 36) {
+            tvContent.setText(getResources().getString(R.string.vowel36));
+            img.setImageResource(R.drawable.vowel36);
+            exampleAdapter = new ExampleAdapter(this, list36);
+        }else if (i == 37) {
+            tvContent.setText(getResources().getString(R.string.vowel37));
+            img.setImageResource(R.drawable.vowel37);
+            exampleAdapter = new ExampleAdapter(this, list37);
+        }else if (i == 38) {
+            tvContent.setText(getResources().getString(R.string.vowel38));
+            img.setImageResource(R.drawable.vowel38);
+            exampleAdapter = new ExampleAdapter(this, list38);
+        }else if (i == 39) {
+            tvContent.setText(getResources().getString(R.string.vowel39));
+            img.setImageResource(R.drawable.vowel39);
+            exampleAdapter = new ExampleAdapter(this, list39);
+        }else if (i == 40) {
+            tvContent.setText(getResources().getString(R.string.vowel40));
+            img.setImageResource(R.drawable.vowel40);
+            exampleAdapter = new ExampleAdapter(this, list40);
+        }else if (i == 41) {
+            tvContent.setText(getResources().getString(R.string.vowel41));
+            img.setImageResource(R.drawable.vowel41);
+            exampleAdapter = new ExampleAdapter(this, list41);
+        }else if (i == 42) {
+            tvContent.setText(getResources().getString(R.string.vowel42));
+            img.setImageResource(R.drawable.vowel42);
+            exampleAdapter = new ExampleAdapter(this, list42);
+        }else if (i == 43) {
+            tvContent.setText(getResources().getString(R.string.vowel43));
+            img.setImageResource(R.drawable.vowel43);
+            exampleAdapter = new ExampleAdapter(this, list43);
+        }else if (i == 44) {
+            tvContent.setText(getResources().getString(R.string.vowel44));
+            img.setImageResource(R.drawable.vowel44);
+            exampleAdapter = new ExampleAdapter(this, list44);
         }
+
         exampleAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(exampleAdapter);
     }
@@ -224,6 +329,31 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
                 "scarce (adj)", "there (adv)", "barely (adv)", "upstairs (adv)"};
         string20 = new String[]{"tournament (n)", "assure (v)", "sure (adj)", "poor (adj)", "surely (adv)"};
 
+        string21 = new String[]{"pen (n)","pocket (n)","paper (n)","airport (n)","trip (n)","envelope (n)","put (v)","copy (v)","stop (v)","cheap (adj)"};
+        string22 = new String[]{"boy (n)","bread (n)","bag (n)","book (n)","boots (n)","number (n)","club (n)","job (n)","remember (v)"};
+        string23 = new String[]{"water (n)","bottle (n)","west (n)","complete (v)","missed (v)","tall (adj)","better (adj)","two (number)"};
+        string24 = new String[]{"day (n)","middle (n)","ladder (n)","garden (n)","head (n)","dance (v)","drink (v)","deep (adj)","good (adj)"};
+        string25 = new String[]{"calf (n)","king (n)","Christmas (n)","cook (v)","like (v)","make (v)","look (v)","think (v)"};
+        string26 = new String[]{"gate (n)","dragon (n)","beggar (n)","leg (n)","fog (n)","give (v)","grow (v)","jog (v)"};
+        string27 = new String[]{"sister (n)","Christmas (n)","grass (n)","face (n)","office (n)","scissors (n)","sit (v)","sleep (v)","yesterday (adv)"};
+        string28 = new String[]{"size (n)","ozone (n)","prize (n)","noise (n)","rose (n)","doors (n)","surprise (n)","rise (v)","zero (number)"};
+        string29 = new String[]{"mushroom (n)","Russia (n)","mission (n)","action (n)","emotion (n)","musician (n)","machine (n)","sugar (n)","she (pron)"};
+        string30 = new String[]{"genre (n)","Asia (n)","decision (n)","occasion (n)","leisure (n)","equation (n)","garage (n)","massage (n)","usually (adv)"};
+        string31 = new String[]{"cheese (n)","teacher (n)","March (n)","culture (n)","future (n)","picture (n)","kitchen (n)","watch (n)"};
+        string32 = new String[]{"job (n)","gym (n)","age (n)","education (n)","fridge (n)","join (v)","enjoy (v)","giant (adj)","large (adj)"};
+        string33 = new String[]{"face (n)","finger (n)","coffee (n)","staff (n)","photo (n)","orphan (n)","laugh (v)","cough (v)","fat (adj)"};
+        string34 = new String[]{"vase (n)","vest (n)","violin (n)","lover (n)","advice (n)","glove (n)","drive (v)","seven (number)","five (number)"};
+        string35 = new String[]{"wife (n)","weather (n)","world (n)","language (n)","sweet (adj)","white (adj)","why (adv)","what (pron)","one (number)"};
+        string36 = new String[]{"year (n)","young (adj)","yesterday (adv)","you (pron)","yeah (exclamation)","your (determiner)","","","","",};
+        string37 = new String[]{"hand (n)","house (n)","homework (n)","forehead (n)","behave (v)","who (pron)","whom (pron)","whose (pron)","behind (prep)"};
+        string38 = new String[]{"thief (n)","throat (n)","author (n)","Kathy (n)","birthday (n)","mouth (n)","north (n)","teeth (n)","thin (adj)"};
+        string39 = new String[]{"mother (n)","father (n)","feather (n)","bathe (v)","breathe (v)","smooth (adj)","they (pron)","this (pron)","these (pron)"};
+        string40 = new String[]{"map (n)","mirror (n)","Monday (n)","film (n)","woman (n)","roommate (n)","mark (v)","smile (v)","slim (adj)"};
+        string41 = new String[]{"nature (n)","nation (n)","knife (n)","month (n)","need (v)","know (v)","win (v)","learn (v)","sunny (adj)"};
+        string42 = new String[]{"king (n)","ring (n)","monkey (n)","uncle (n)","morning (n)","think (v)","sing (v)","long (adj)","single (adj)"};
+        string43 = new String[]{"leaf (n)","lamp (n)","wallet (n)","ball (n)","alarm (v)","believe (v)","sail (v)","fall (v)","silly (adj)"};
+        string44 = new String[]{"road (n)","parents (n)","ferry (n)","read (v)","borrow (v)","write (v)","American (adj)","sorry (adj)","wrong (adj)"};
+
         list1 = Arrays.asList(string1);
         list2 = Arrays.asList(string2);
         list3 = Arrays.asList(string3);
@@ -244,6 +374,35 @@ public class DetailVowelActivity extends AppCompatActivity implements View.OnCli
         list18 = Arrays.asList(string18);
         list19 = Arrays.asList(string19);
         list20 = Arrays.asList(string20);
+
+
+        list21 = Arrays.asList(string21);
+        list22 = Arrays.asList(string22);
+        list23 = Arrays.asList(string23);
+        list24 = Arrays.asList(string24);
+        list25 = Arrays.asList(string25);
+        list26 = Arrays.asList(string26);
+        list27 = Arrays.asList(string27);
+        list28 = Arrays.asList(string28);
+        list29 = Arrays.asList(string29);
+        list30 = Arrays.asList(string30);
+
+        list31 = Arrays.asList(string31);
+        list32 = Arrays.asList(string32);
+        list33 = Arrays.asList(string33);
+        list34 = Arrays.asList(string34);
+        list35 = Arrays.asList(string35);
+        list36 = Arrays.asList(string36);
+        list37 = Arrays.asList(string37);
+        list38 = Arrays.asList(string38);
+        list39 = Arrays.asList(string39);
+        list40 = Arrays.asList(string40);
+
+        list41 = Arrays.asList(string41);
+        list42 = Arrays.asList(string42);
+        list43 = Arrays.asList(string43);
+        list44 = Arrays.asList(string44);
+
     }
 
 

@@ -5,7 +5,7 @@
     android:id="@+id/ln_parent_vowelpair"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFabListen"
+    android:background="@color/colorListening"
     android:transitionName="lnlisten"
     tools:context="com.app.esd.esd.Activity.VowelPairActivity">
 
@@ -31,7 +31,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/choose"
+                    android:src="@drawable/ic_speaking"
                     android:transitionName="imgvlisten" />
 
                 <TextView

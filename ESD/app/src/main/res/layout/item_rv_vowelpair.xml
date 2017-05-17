@@ -20,18 +20,19 @@
         android:paddingTop="32dp">
 
         <TextView
-            android:id="@+id/txtv_vowel1_itemrv"
+            android:id="@+id/txtv_vowel_itemrv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lines="1"
+            android:transitionName="vowelpair"
             android:maxLines="1"
             android:textAllCaps="false"
             android:textColor="@color/coloritemrvVowel"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtv_wordpair1_itemrv"
+            android:id="@+id/txtv_wordpair_itemrv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -18,4 +18,7 @@
     <color name="coloritemrvVowel">#324A5E</color>
     <color name="coloritemrvWord">#FF7058</color>
     <color name="rippleitemrv">#84DBFF</color>
+    <color name="colorListening">#F0582F</color>
+    <color name="colornext">#84DBFF</color>
+    <color name="colorback">#E6E9ED</color>
     </resources>

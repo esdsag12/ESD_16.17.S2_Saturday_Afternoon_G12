@@ -22,7 +22,7 @@ public class Rv_VowelPair_Adapter extends RecyclerView.Adapter<Rv_VowelPair_Adap
     }
 
     public interface OnItemClickListener {
-        void ItemClick(Activity activity, int ID);
+        void ItemClick(Activity activity, int ID, View itemView, String pair);
     }
 
     private OnItemClickListener onItemClickListener;
@@ -38,14 +38,14 @@ public class Rv_VowelPair_Adapter extends RecyclerView.Adapter<Rv_VowelPair_Adap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final VowelPair vowelPair1 = VowelPair.values()[position];
         holder.tv_vowel1.setText(vowelPair1.getVeowel());
         holder.tv_word1.setText(vowelPair1.getWord());
         holder.cardv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListener.ItemClick(activity, position);
+                onItemClickListener.ItemClick(activity, position, holder.itemView, vowelPair1.getVeowel());
             }
         });
     }
@@ -69,8 +69,8 @@ public class Rv_VowelPair_Adapter extends RecyclerView.Adapter<Rv_VowelPair_Adap
         public ViewHolder(View itemView) {
             super(itemView);
             cardv1 = (CardView) itemView.findViewById(R.id.cardv1_vowelpair);
-            tv_vowel1 = (TextView) itemView.findViewById(R.id.txtv_vowel1_itemrv);
-            tv_word1 = (TextView) itemView.findViewById(R.id.txtv_wordpair1_itemrv);
+            tv_vowel1 = (TextView) itemView.findViewById(R.id.txtv_vowel_itemrv);
+            tv_word1 = (TextView) itemView.findViewById(R.id.txtv_wordpair_itemrv);
         }
     }
 

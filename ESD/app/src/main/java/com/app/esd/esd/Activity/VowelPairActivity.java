@@ -4,10 +4,12 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -37,10 +39,15 @@ public class VowelPairActivity extends AppCompatActivity {
         rv_vowel.setAdapter(rv_adapter);
         rv_adapter.setOnItemClickListener(new Rv_VowelPair_Adapter.OnItemClickListener() {
             @Override
-            public void ItemClick(Activity activity, int ID) {
+            public void ItemClick(Activity activity, int ID, View itemView, String pair) {
                 Intent intent_open = new Intent(activity, PracticeChooseWord.class);
-                intent_open.putExtra("id",ID);
-                startActivity(intent_open);
+                ActivityOptionsCompat option_text = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(activity,
+                                itemView.findViewById(R.id.txtv_vowel_itemrv),
+                                "vowelpair");
+                intent_open.putExtra("pair", pair);
+                intent_open.putExtra("id", ID);
+                startActivity(intent_open, option_text.toBundle());
             }
         });
     }

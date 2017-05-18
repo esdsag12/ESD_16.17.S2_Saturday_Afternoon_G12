@@ -53,6 +53,26 @@
                     android:scrollbarSize="0dp"
                     android:scrollbarStyle="insideOverlay"
                     android:scrollbars="vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="consonant pairs"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:transitionName="txtvlisten" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_consonantpair"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp"
+                    android:scrollbarSize="0dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical" />
             </LinearLayout>
         </ScrollView>
     </android.support.v4.widget.NestedScrollView>

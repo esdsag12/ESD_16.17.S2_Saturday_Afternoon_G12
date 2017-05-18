@@ -14,15 +14,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.app.esd.esd.Adapter.Rv_ConsonantPair_Adapter;
 import com.app.esd.esd.Adapter.Rv_VowelPair_Adapter;
 import com.app.esd.esd.R;
 
 public class VowelPairActivity extends AppCompatActivity {
     ImageView imgv_icon;
     Animator animator;
-    RecyclerView rv_vowel;
-    RecyclerView.LayoutManager rvLm;
-    Rv_VowelPair_Adapter rv_adapter;
+    RecyclerView rv_vowel, rv_conso;
+    RecyclerView.LayoutManager rv_vowel_Lm, rv_conso_Lm;
+    Rv_VowelPair_Adapter rv_vowel_adapter;
+    Rv_ConsonantPair_Adapter rv_conso_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,29 @@ public class VowelPairActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vowel_pair);
         imgv_icon = (ImageView) findViewById(R.id.imgv_icon_vowelpair);
         rv_vowel = (RecyclerView) findViewById(R.id.rv_vowelpair);
-        rvLm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
-        rv_vowel.setLayoutManager(rvLm);
-        rv_adapter = new Rv_VowelPair_Adapter(this);
-        rv_vowel.setAdapter(rv_adapter);
-        rv_adapter.setOnItemClickListener(new Rv_VowelPair_Adapter.OnItemClickListener() {
+        rv_vowel_Lm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
+        rv_vowel.setLayoutManager(rv_vowel_Lm);
+        rv_vowel_adapter = new Rv_VowelPair_Adapter(this);
+        rv_vowel.setAdapter(rv_vowel_adapter);
+        rv_vowel_adapter.setOnItemClickListener(new Rv_VowelPair_Adapter.OnItemClickListener() {
+            @Override
+            public void ItemClick(Activity activity, int ID, View itemView, String pair) {
+                Intent intent_open = new Intent(activity, PracticeChooseWord.class);
+                ActivityOptionsCompat option_text = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(activity,
+                                itemView.findViewById(R.id.txtv_vowel_itemrv),
+                                "vowelpair");
+                intent_open.putExtra("pair", pair);
+                intent_open.putExtra("id", ID);
+                startActivity(intent_open, option_text.toBundle());
+            }
+        });
+        rv_conso = (RecyclerView) findViewById(R.id.rv_consonantpair);
+        rv_conso_Lm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
+        rv_conso.setLayoutManager(rv_conso_Lm);
+        rv_conso_adapter = new Rv_ConsonantPair_Adapter(this);
+        rv_conso.setAdapter(rv_conso_adapter);
+        rv_conso_adapter.setOnItemClickListener(new Rv_ConsonantPair_Adapter.OnItemClickListener() {
             @Override
             public void ItemClick(Activity activity, int ID, View itemView, String pair) {
                 Intent intent_open = new Intent(activity, PracticeChooseWord.class);

@@ -42,6 +42,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     TextView txtv_next, txtv_back, txtv_pair;
     String pair = "";
     CardView cardv_result;
+    private int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id = extras.getInt("id");
+            type = extras.getInt("type");
         }
         pair = extras.getString("pair");
         init();
@@ -94,12 +96,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         Animator animator = ViewAnimationUtils.createCircularReveal(cardv_result, cx, cy, 0, end);
         cardv_result.setVisibility(View.VISIBLE);
         ln4.setVisibility(View.VISIBLE);
-        if(id==0)
-        {
+        if (id == 0) {
             txtv_back.setVisibility(View.INVISIBLE);
-        }
-        else if (id >0)
-        {
+        } else if (id > 0) {
             txtv_back.setVisibility(View.VISIBLE);
             txtv_next.setVisibility(View.VISIBLE);
         }
@@ -109,33 +108,23 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     public void setDataList() {
         string1 = new String[]{"eat", "seat", "teen", "sheep", "been"};
         string2 = new String[]{"it", "sit", "tin", "ship", "bin"};
-        string3 = new String[]{"men", "pen", "met", "beg","set"};
-        string4 = new String[]{"man", "pan", "mat", "bag","sat"};
+        string3 = new String[]{"men", "pen", "met", "beg", "set"};
+        string4 = new String[]{"man", "pan", "mat", "bag", "sat"};
         string5 = new String[]{"come", "cup", "hut", "cut", "bun"};
         string6 = new String[]{"calm", "carp", "heart", "cart", "barn"};
-        string7 = new String[]{"pot", "don", "cot", "shot","spot"};
-        string8 = new String[]{"port", "dawn", "caught", "short","sport"};
+        string7 = new String[]{"pot", "don", "cot", "shot", "spot"};
+        string8 = new String[]{"port", "dawn", "caught", "short", "sport"};
         string9 = new String[]{"foot", "full", "wood", "look", "stood"};
         string10 = new String[]{"food", "fool", "wooed", "luke", "stewed"};
-        string11 = new String[]{"term (n)", "firm (n)", "bird (n)", "word (n)",
-                "burglar (n)", "journey (n)", "learn (v)", "dirty (adj)", "thirty (number)"};
-        string12 = new String[]{"woman (n)", "mother (n)", "accept (v)", "answer (v)",
-                "complete (v)", "suggest (v)", "handsome (adj)", "anxious (adj)", "responsible (adj)"};
-        string13 = new String[]{"aim (n)", "gate (n)", "lake (n)", "tail (n)", "clay (n)", "weight (n)",
-                "break (v)", "escape (v)", "anyway (adv)"};
-        string14 = new String[]{"side (n)", "price (n)", "night (n)", "sky (n)", "July (n)", "die (v)",
-                "deny (v)", "white (adj)", "ripe (adj)"};
-        string15 = new String[]{"toy (n)", "oil (n)", "choice (n)", "appoinment (n)", "spoil (v)", "annoy (v)",
-                "enjoy (v)", "noisy (adj)"};
-        string16 = new String[]{"house (n)", "flower (n)", "power (n)", "council (n)", "pronounce (v)", "loud (adj)",
-                "brown (adj)", "now (adv)"};
-        string17 = new String[]{"home (n)", "coat (n)", "road (n)", "toe (n)", "window (n)", "potato (n)",
-                "propose (v)", "slow (adj)"};
-        string18 = new String[]{"deer (n)", "spear (n)", "idea (n)", "steer (v)",
-                "near (prep)"};
-        string19 = new String[]{"square (n)", "area (n)", "share (v)", "tear (v)",
-                "scarce (adj)", "there (adv)", "barely (adv)", "upstairs (adv)"};
-        string20 = new String[]{"tournament (n)", "assure (v)", "sure (adj)", "poor (adj)", "surely (adv)"};
+
+        string11 = new String[]{"sip", "seal", "ice", "rice", "lice"};
+        string12 = new String[]{"zip", "zeal", "eyes", "rise", "lies"};
+        string13 = new String[]{"ten", "tip", "town", "team", "tier"};
+        string14 = new String[]{"den", "dip", "down", "deem", "dear"};
+        string15 = new String[]{"thigh", "teeth", "wreath", "ether", "breath"};
+        string16 = new String[]{"thy", "teethe", "wreathe", "either", "breathe"};
+        string17 = new String[]{"pin", "pea", "pat", "pig", "pump"};
+        string18 = new String[]{"bin", "bee", "bat", "big", "bump"};
 
         list1 = Arrays.asList(string1);
         list2 = Arrays.asList(string2);
@@ -155,15 +144,13 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         list16 = Arrays.asList(string16);
         list17 = Arrays.asList(string17);
         list18 = Arrays.asList(string18);
-        list19 = Arrays.asList(string19);
-        list20 = Arrays.asList(string20);
 
         random = new Random();
 
     }
 
     public void setData(int i) {
-        if (i == 0) {
+        if (i == 0 && type == 0) {
             if (stt < string1.length) {
                 if (rand(0, 1) == 1) {
                     text = string1[stt].split(" ");
@@ -189,7 +176,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 1) {
+        } else if (i == 1 && type == 0) {
             if (stt < string3.length) {
                 if (rand(3, 4) == 3) {
                     text = string3[stt].split(" ");
@@ -213,7 +200,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 3) {
+        } else if (i == 3 && type == 0) {
             if (stt < string5.length) {
                 if (rand(5, 6) == 5) {
                     text = string5[stt].split(" ");
@@ -237,7 +224,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i==4 ) {
+        } else if (i == 4 && type == 0) {
             if (stt < string1.length) {
                 if (rand(7, 8) == 7) {
                     text = string7[stt].split(" ");
@@ -257,11 +244,11 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
-                tv_result.setText(String.valueOf(score) + "/" + string1.length);
+                tv_result.setText(String.valueOf(score) + "/" + string7.length);
                 animCR();
                 score = 0;
             }
-        } else if (i == 2) {
+        } else if (i == 2 && type == 0) {
             if (stt < string9.length) {
                 if (rand(9, 10) == 9) {
                     text = string9[stt].split(" ");
@@ -285,9 +272,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 11 || i == 12) {
+        } else if (i == 0 && type == 1) {
             if (stt < string11.length) {
-                if (i == 11) {
+                if (rand(11, 12) == 11) {
                     text = string11[stt].split(" ");
                 } else {
                     text = string12[stt].split(" ");
@@ -309,9 +296,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 13 || i == 14) {
+        } else if (i == 1 && type == 1) {
             if (stt < string13.length) {
-                if (i == 13) {
+                if (rand(13, 14) == 13) {
                     text = string13[stt].split(" ");
                 } else {
                     text = string14[stt].split(" ");
@@ -333,9 +320,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 15 || i == 16) {
+        } else if (i == 2 && type == 1) {
             if (stt < string15.length) {
-                if (i == 15) {
+                if (rand(15, 16) == 15) {
                     text = string15[stt].split(" ");
                 } else {
                     text = string16[stt].split(" ");
@@ -357,51 +344,27 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                 animCR();
                 score = 0;
             }
-        } else if (i == 17 || i == 18) {
+        } else if (i == 3 && type == 1) {
             if (stt < string1.length) {
-                if (i == 1) {
-                    text = string1[stt].split(" ");
+                if (rand(17, 18) == 1) {
+                    text = string17[stt].split(" ");
                 } else {
-                    text = string2[stt].split(" ");
+                    text = string18[stt].split(" ");
                 }
                 strExample = text[0];
                 if (rand(0, 1) == 0) {
-                    text = string1[stt].split(" ");
+                    text = string17[stt].split(" ");
                     tv1.setText(text[0]);
-                    text = string2[stt].split(" ");
+                    text = string18[stt].split(" ");
                     tv2.setText(text[0]);
                 } else {
-                    text = string2[stt].split(" ");
+                    text = string18[stt].split(" ");
                     tv1.setText(text[0]);
-                    text = string1[stt].split(" ");
+                    text = string17[stt].split(" ");
                     tv2.setText(text[0]);
                 }
             } else {
-                tv_result.setText(String.valueOf(score) + "/" + string1.length);
-                animCR();
-                score = 0;
-            }
-        } else if (i == 19 || i == 20) {
-            if (stt < string1.length) {
-                if (i == 1) {
-                    text = string1[stt].split(" ");
-                } else {
-                    text = string2[stt].split(" ");
-                }
-                strExample = text[0];
-                if (rand(0, 1) == 0) {
-                    text = string1[stt].split(" ");
-                    tv1.setText(text[0]);
-                    text = string2[stt].split(" ");
-                    tv2.setText(text[0]);
-                } else {
-                    text = string2[stt].split(" ");
-                    tv1.setText(text[0]);
-                    text = string1[stt].split(" ");
-                    tv2.setText(text[0]);
-                }
-            } else {
-                tv_result.setText(String.valueOf(score) + "/" + string1.length);
+                tv_result.setText(String.valueOf(score) + "/" + string17.length);
                 animCR();
                 score = 0;
             }

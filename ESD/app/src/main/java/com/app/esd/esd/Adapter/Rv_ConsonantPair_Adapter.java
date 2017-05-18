@@ -77,9 +77,8 @@ public class Rv_ConsonantPair_Adapter extends RecyclerView.Adapter<Rv_ConsonantP
     public enum CoonsonantPair {
         VOWEL1("/s/ & /z/", "Sun & Zoo"),
         VOWEL2("/t/ & /d/", "Cart & Card"),
-        VOWEL3("/w/ & /j/", "Wood & Young"),
-        VOWEL4("/θ/ & /ð/", "Think & Them"),
-        VOWEL5("/tʃ/ & /dʒ/", "Cheap & Jeep");
+        VOWEL3("/θ/ & /ð/", "Think & Them"),
+        VOWEL4("/p/ & /b/", "Pin & Bin");
         private String consonant;
         private String word;
 

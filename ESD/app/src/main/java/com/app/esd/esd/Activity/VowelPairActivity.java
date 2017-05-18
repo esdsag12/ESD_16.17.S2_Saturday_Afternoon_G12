@@ -49,6 +49,7 @@ public class VowelPairActivity extends AppCompatActivity {
                                 "vowelpair");
                 intent_open.putExtra("pair", pair);
                 intent_open.putExtra("id", ID);
+                intent_open.putExtra("type",0);
                 startActivity(intent_open, option_text.toBundle());
             }
         });
@@ -67,6 +68,7 @@ public class VowelPairActivity extends AppCompatActivity {
                                 "vowelpair");
                 intent_open.putExtra("pair", pair);
                 intent_open.putExtra("id", ID);
+                intent_open.putExtra("type",1);
                 startActivity(intent_open, option_text.toBundle());
             }
         });

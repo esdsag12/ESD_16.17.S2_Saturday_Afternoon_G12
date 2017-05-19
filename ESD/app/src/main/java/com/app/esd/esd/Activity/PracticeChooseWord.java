@@ -25,7 +25,7 @@ import static java.lang.Thread.sleep;
 
 public class PracticeChooseWord extends BaseActivity implements View.OnClickListener {
     private TextView tv1, tv2, tv_result, tv4;
-    private ImageView imgSpeak;
+    private ImageView imgSpeak,imgReset;
     private String[] string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12,
             string13, string14, string15, string16, string17, string18, string19, string20;
     private List<String> list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15,
@@ -39,7 +39,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     HashMap<String, String> map;
     private int stt;
     private int score;
-    TextView txtv_next, txtv_back, txtv_pair;
+    TextView txtv_next, txtv_back, txtv_pair,tvVowelResult;
     String pair = "";
     CardView cardv_result;
     private int type;
@@ -55,8 +55,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         if (extras != null) {
             id = extras.getInt("id");
             type = extras.getInt("type");
+            pair = extras.getString("pair");
         }
-        pair = extras.getString("pair");
+
         init();
         setDataList();
         setData(id);
@@ -71,10 +72,12 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         tv_result = (TextView) findViewById(R.id.tv_result);
         txtv_next = (TextView) findViewById(R.id.txtv_next);
         txtv_back = (TextView) findViewById(R.id.txtv_back);
+        tvVowelResult = (TextView)findViewById(R.id.tvVowelResult);
         ln1 = (LinearLayout) findViewById(R.id.ln1);
         ln2 = (LinearLayout) findViewById(R.id.ln2);
         ln4 = (LinearLayout) findViewById(R.id.ln4);
         imgSpeak = (ImageView) findViewById(R.id.imgSpeak);
+        imgReset=(ImageView)findViewById(R.id.img_reset) ;
         map = new HashMap<String, String>();
         stt = 0;
         score = 0;
@@ -87,6 +90,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         ln2.setOnClickListener(this);
         txtv_next.setOnClickListener(this);
         txtv_back.setOnClickListener(this);
+        imgReset.setOnClickListener(this);
     }
 
     private void animCR() {
@@ -99,10 +103,36 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         if (id == 0) {
             txtv_back.setVisibility(View.INVISIBLE);
         } else if (id > 0) {
-            txtv_back.setVisibility(View.VISIBLE);
-            txtv_next.setVisibility(View.VISIBLE);
+            if(type==0) {
+                if(id==4) {
+                    txtv_next.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    txtv_back.setVisibility(View.VISIBLE);
+                    txtv_next.setVisibility(View.VISIBLE);
+                }
+            }
+            if(type ==1)
+            {
+                if(id==3) {
+                    txtv_back.setVisibility(View.VISIBLE);
+                    txtv_next.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    txtv_back.setVisibility(View.VISIBLE);
+                    txtv_next.setVisibility(View.VISIBLE);
+                }
+            }
         }
         animator.start();
+        ln1.setVisibility(View.INVISIBLE);
+        ln2.setVisibility(View.INVISIBLE);
+        imgSpeak.setVisibility(View.INVISIBLE);
+        tvVowelResult.setVisibility(View.VISIBLE);
+        txtv_pair.setVisibility(View.GONE);
+        imgReset.setVisibility(View.VISIBLE);
     }
 
     public void setDataList() {
@@ -150,7 +180,11 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     }
 
     public void setData(int i) {
+        imgReset.setVisibility(View.GONE);
+        tvVowelResult.setVisibility(View.INVISIBLE);
         if (i == 0 && type == 0) {
+            txtv_pair.setText("/I/ & /iː/");
+            tvVowelResult.setText("/I/ & /iː/");
             if (stt < string1.length) {
                 if (rand(0, 1) == 1) {
                     text = string1[stt].split(" ");
@@ -172,11 +206,14 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string1.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 1 && type == 0) {
+            txtv_pair.setText("/e/ & /æ/");
+            tvVowelResult.setText("/e/ & /æ/");
             if (stt < string3.length) {
                 if (rand(3, 4) == 3) {
                     text = string3[stt].split(" ");
@@ -196,11 +233,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string3.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 3 && type == 0) {
+            txtv_pair.setText("/ʊ/ & /uː/");
+            tvVowelResult.setText("/ʊ/ & /uː/");
             if (stt < string5.length) {
                 if (rand(5, 6) == 5) {
                     text = string5[stt].split(" ");
@@ -220,11 +262,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string5.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 4 && type == 0) {
+            txtv_pair.setText("/ɒ/ & /ɔ:/");
+            tvVowelResult.setText("/ɒ/ & /ɔ:/");
             if (stt < string1.length) {
                 if (rand(7, 8) == 7) {
                     text = string7[stt].split(" ");
@@ -244,11 +291,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string7.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 2 && type == 0) {
+            txtv_pair.setText("/ʊ/ & /uː/");
+            tvVowelResult.setText("/ʊ/ & /uː/");
             if (stt < string9.length) {
                 if (rand(9, 10) == 9) {
                     text = string9[stt].split(" ");
@@ -268,11 +320,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string9.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 0 && type == 1) {
+            txtv_pair.setText("/s/ & /z/");
+            tvVowelResult.setText("/s/ & /z/");
             if (stt < string11.length) {
                 if (rand(11, 12) == 11) {
                     text = string11[stt].split(" ");
@@ -292,11 +349,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string11.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 1 && type == 1) {
+            txtv_pair.setText("/t/ & /d/");
+            tvVowelResult.setText("/t/ & /d/");
             if (stt < string13.length) {
                 if (rand(13, 14) == 13) {
                     text = string13[stt].split(" ");
@@ -316,11 +378,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string13.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 2 && type == 1) {
+            txtv_pair.setText("/θ/ & /ð/");
+            tvVowelResult.setText("/θ/ & /ð/");
             if (stt < string15.length) {
                 if (rand(15, 16) == 15) {
                     text = string15[stt].split(" ");
@@ -340,11 +407,16 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string15.length);
                 animCR();
                 score = 0;
             }
         } else if (i == 3 && type == 1) {
+            txtv_pair.setText("/p/ & /b/");
+            tvVowelResult.setText("/p/ & /b/");
             if (stt < string1.length) {
                 if (rand(17, 18) == 1) {
                     text = string17[stt].split(" ");
@@ -364,6 +436,9 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     tv2.setText(text[0]);
                 }
             } else {
+                tv1.setText("");
+                tv2.setText("");
+                stt=0;
                 tv_result.setText(String.valueOf(score) + "/" + string17.length);
                 animCR();
                 score = 0;
@@ -396,30 +471,37 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
                     clearError();
                 }
                 break;
-            case R.id.ln3:
-                if (tv_result.getText().toString().equals(strExample)) {
-                    ln3.setBackgroundColor(getResources().getColor(R.color.correct));
-                    setNewData();
-                } else {
-                    ln3.setBackgroundColor(getResources().getColor(R.color.error));
-                    clearError();
-
-                }
-                break;
-            case R.id.ln4:
-                if (tv4.getText().toString().equals(strExample)) {
-                    ln4.setBackgroundColor(getResources().getColor(R.color.correct));
-                    setNewData();
-                } else {
-                    ln4.setBackgroundColor(getResources().getColor(R.color.error));
-                    clearError();
-                }
-                break;
             case R.id.txtv_next:
+                id++;
+                setData(id);
+                cardv_result.setVisibility(View.INVISIBLE);
+                ln1.setVisibility(View.VISIBLE);
+                ln2.setVisibility(View.VISIBLE);
+                imgSpeak.setVisibility(View.VISIBLE);
+                tvVowelResult.setVisibility(View.GONE);
+                txtv_pair.setVisibility(View.VISIBLE);
+                ln4.setVisibility(View.INVISIBLE);
                 break;
             case R.id.txtv_back:
+                id--;
+                setData(id);
+                cardv_result.setVisibility(View.INVISIBLE);
+                ln1.setVisibility(View.VISIBLE);
+                ln2.setVisibility(View.VISIBLE);
+                imgSpeak.setVisibility(View.VISIBLE);
+                tvVowelResult.setVisibility(View.GONE);
+                txtv_pair.setVisibility(View.VISIBLE);
+                ln4.setVisibility(View.INVISIBLE);
                 break;
-
+            case R.id.img_reset:
+                setData(id);
+                cardv_result.setVisibility(View.INVISIBLE);
+                ln1.setVisibility(View.VISIBLE);
+                ln2.setVisibility(View.VISIBLE);
+                imgSpeak.setVisibility(View.VISIBLE);
+                tvVowelResult.setVisibility(View.GONE);
+                txtv_pair.setVisibility(View.VISIBLE);
+                ln4.setVisibility(View.INVISIBLE);
         }
     }
 

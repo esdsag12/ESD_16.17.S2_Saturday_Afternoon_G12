@@ -1,6 +1,9 @@
 package com.app.esd.esd.Activity;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +28,7 @@ import static java.lang.Thread.sleep;
 
 public class PracticeChooseWord extends BaseActivity implements View.OnClickListener {
     private TextView tv1, tv2, tv_result, tv4;
-    private ImageView imgSpeak,imgReset;
+    private ImageView imgSpeak, imgReset;
     private String[] string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12,
             string13, string14, string15, string16, string17, string18, string19, string20;
     private List<String> list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15,
@@ -39,7 +42,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
     HashMap<String, String> map;
     private int stt;
     private int score;
-    TextView txtv_next, txtv_back, txtv_pair,tvVowelResult;
+    TextView txtv_next, txtv_back, txtv_pair, tvVowelResult;
     String pair = "";
     CardView cardv_result;
     private int type;
@@ -72,12 +75,12 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         tv_result = (TextView) findViewById(R.id.tv_result);
         txtv_next = (TextView) findViewById(R.id.txtv_next);
         txtv_back = (TextView) findViewById(R.id.txtv_back);
-        tvVowelResult = (TextView)findViewById(R.id.tvVowelResult);
+        tvVowelResult = (TextView) findViewById(R.id.tvVowelResult);
         ln1 = (LinearLayout) findViewById(R.id.ln1);
         ln2 = (LinearLayout) findViewById(R.id.ln2);
         ln4 = (LinearLayout) findViewById(R.id.ln4);
         imgSpeak = (ImageView) findViewById(R.id.imgSpeak);
-        imgReset=(ImageView)findViewById(R.id.img_reset) ;
+        imgReset = (ImageView) findViewById(R.id.img_reset);
         map = new HashMap<String, String>();
         stt = 0;
         score = 0;
@@ -103,24 +106,19 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         if (id == 0) {
             txtv_back.setVisibility(View.INVISIBLE);
         } else if (id > 0) {
-            if(type==0) {
-                if(id==4) {
+            if (type == 0) {
+                if (id == 4) {
                     txtv_next.setVisibility(View.INVISIBLE);
-                }
-                else
-                {
+                } else {
                     txtv_back.setVisibility(View.VISIBLE);
                     txtv_next.setVisibility(View.VISIBLE);
                 }
             }
-            if(type ==1)
-            {
-                if(id==3) {
+            if (type == 1) {
+                if (id == 3) {
                     txtv_back.setVisibility(View.VISIBLE);
                     txtv_next.setVisibility(View.INVISIBLE);
-                }
-                else
-                {
+                } else {
                     txtv_back.setVisibility(View.VISIBLE);
                     txtv_next.setVisibility(View.VISIBLE);
                 }
@@ -132,7 +130,19 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
         imgSpeak.setVisibility(View.INVISIBLE);
         tvVowelResult.setVisibility(View.VISIBLE);
         txtv_pair.setVisibility(View.GONE);
-        imgReset.setVisibility(View.VISIBLE);
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(imgReset, "scaleX", 0, 1),
+                scaleY = ObjectAnimator.ofFloat(imgReset, "scaleY", 0, 1);
+        final AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setStartDelay(100);
+        animatorSet.playTogether(scaleX, scaleY);
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                animatorSet.start();
+                imgReset.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void setDataList() {
@@ -206,7 +216,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string1.length);
                 animCR();
                 score = 0;
@@ -235,7 +245,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string3.length);
                 animCR();
                 score = 0;
@@ -264,7 +274,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string5.length);
                 animCR();
                 score = 0;
@@ -293,7 +303,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string7.length);
                 animCR();
                 score = 0;
@@ -322,7 +332,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string9.length);
                 animCR();
                 score = 0;
@@ -351,7 +361,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string11.length);
                 animCR();
                 score = 0;
@@ -380,7 +390,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string13.length);
                 animCR();
                 score = 0;
@@ -409,7 +419,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string15.length);
                 animCR();
                 score = 0;
@@ -438,7 +448,7 @@ public class PracticeChooseWord extends BaseActivity implements View.OnClickList
             } else {
                 tv1.setText("");
                 tv2.setText("");
-                stt=0;
+                stt = 0;
                 tv_result.setText(String.valueOf(score) + "/" + string17.length);
                 animCR();
                 score = 0;

@@ -1,57 +1,87 @@
 package com.app.esd.esd.Activity;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.esd.esd.Const.AppConst;
 import com.app.esd.esd.Interface.OxfordPronuncationListener;
 import com.app.esd.esd.Modals.ApiModals.OxfordObject;
+import com.app.esd.esd.Modals.Sentence;
 import com.app.esd.esd.Modals.ServicesModals.OxfordPronunciationService;
 import com.app.esd.esd.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
-public class Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener, OxfordPronuncationListener {
+public class
+Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener, TextToSpeech.OnInitListener {
     private TextView btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10,
             btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20,
             btn21, btn22, btn23, btn24, btn25, btn26, btn27, btn28, btn29, btn30,
             btn31, btn32, btn33, btn34, btn35, btn36, btn37, btn38, btn39, btn40,
-            btn41, btn42, btn43, btn44, btnDel, btnEnter, txtText,btnReload;
+            btn41, btn42, btn43, btn44, btnDel, btnEnter, txtText, txtTextPronun,txtStt;
+    private ImageView imgRead, imgNext, imgPrev;
+    private TextToSpeech textToSpeech;
     private EditText edtText;
-    private String tempText = "", totalText = "", apiWord = "";
     private List<String> listText;
+    private String tempText = "", totalText = "", apiWord = "";
     private int pos = 0, num = 0;
     private MediaPlayer mediaPlayer;
-    String[] listWord = {"love", "smooth", "load", "horse", "bean", "near"};
+    private List<Sentence> sentences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        listText=new ArrayList<>();
+        sentences=new ArrayList<>();
+        Sentence sentence=new Sentence();
+        sentence.setText("Love");
+        sentence.setPronunciation("lʌv");
+        Sentence sentence1=new Sentence();
+        sentence1.setText("shit");
+        sentence1.setPronunciation("ʃɪt");
+        sentences.add(sentence);
+        sentences.add(sentence1);
         initButton();
-
-        getApiWord(pos);
+        textToSpeech = new TextToSpeech(this, this);
+        pos=0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            txtText.setTextColor(getApplicationContext().getColor(R.color.white));
+        }else{
+            txtText.setTextColor(getResources().getColor(R.color.white));
+        }
+        txtText.setText(sentences.get(pos).getText());
+        txtStt.setText(pos+1+"/"+sentences.size());
     }
 
-    private void getApiWord(int pos) {
-        showProgressDialog("wait", "loading....");
-        handleProgressDialog();
-        txtText.setText(listWord[pos]);
-        new OxfordPronunciationService(this).execute(txtText.getText().toString().trim());
-    }
 
     public void initButton() {
-        listText = new ArrayList<>();
+
+
         setContentView(R.layout.activity_keyboard);
+        txtStt= (TextView) findViewById(R.id.txt_stt);
+        txtTextPronun = (TextView) findViewById(R.id.txt_text_pronun);
+        imgRead = (ImageView) findViewById(R.id.buttonRead);
+        imgNext = (ImageView) findViewById(R.id.buttonNext);
+        imgPrev = (ImageView) findViewById(R.id.buttonPrev);
         btn1 = (TextView) findViewById(R.id.button1);
         btn2 = (TextView) findViewById(R.id.button2);
         btn3 = (TextView) findViewById(R.id.button3);
@@ -100,8 +130,10 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
         btnEnter = (TextView) findViewById(R.id.buttonEnter);
         txtText = (TextView) findViewById(R.id.txt_text);
         edtText = (EditText) findViewById(R.id.edt_text);
-        btnReload=(TextView) findViewById(R.id.buttonReload);
-        btnReload.setOnClickListener(this);
+        edtText.setInputType(InputType.TYPE_NULL);
+        imgRead.setOnClickListener(this);
+        imgNext.setOnClickListener(this);
+        imgPrev.setOnClickListener(this);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
@@ -290,15 +322,51 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
                 num = 45;
                 break;
             case R.id.buttonEnter:
-
                 num = 46;
                 break;
-            case R.id.buttonReload:
+            case R.id.buttonRead:
+                speak(sentences.get(pos).getText());
+                break;
+            case R.id.buttonNext:
                 num=-1;
-                getApiWord(pos);
+                tempText = "";
+                totalText = "";
+                edtText.setText("");
+                if (pos + 1 < sentences.size()) {
+                    pos++;
+                } else {
+                    pos = 0;
+                }
+                txtText.setText(sentences.get(pos).getText());
+                txtTextPronun.setText("");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    txtText.setTextColor(getApplicationContext().getColor(R.color.white));
+                }else{
+                    txtText.setTextColor(getResources().getColor(R.color.white));
+                }
+                txtStt.setText(pos+1+"/"+sentences.size());
+                break;
+            case R.id.buttonPrev:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    txtText.setTextColor(getApplicationContext().getColor(R.color.white));
+                }else{
+                    txtText.setTextColor(getResources().getColor(R.color.white));
+                }
+                num=-1;
+                tempText = "";
+                totalText = "";
+                edtText.setText("");
+                if (pos - 1 >= 0) {
+                    pos--;
+                } else {
+                    pos = sentences.size() - 1;
+                }
+                txtText.setText(sentences.get(pos).getText());
+                txtTextPronun.setText("");
+                txtStt.setText(pos+1+"/"+sentences.size());
                 break;
         }
-        if (num < 45&&num>0) {
+        if (num < 45 && num > 0) {
             tempText = AppConst.LIST_SYMBOL[num - 1].trim();
             try {
                 String mMp3Name = "u" + num;
@@ -322,39 +390,53 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
                 }
             }
         }
-        if(num>0) {
+        if (num > 0) {
             edtText.setText(totalText);
             if (totalText.length() > 0) {
                 edtText.setSelection(totalText.length());
             }
         }
         if (num == 46) {
-            if (!TextUtils.isEmpty(apiWord)) {
-                if (!TextUtils.isEmpty(totalText)) {
-                    if (totalText.trim().equals(apiWord.trim())) {
-                        Toast.makeText(this, "Good job!!!", Toast.LENGTH_SHORT).show();
-                        if (pos == listWord.length - 1) {
-                            pos = 0;
-                        } else {
-                            pos++;
-                        }
-                        getApiWord(pos);
-                        edtText.setText("");
-                        listText.clear();
-                        totalText="";
-                        tempText="";
-                    } else {
-                        Toast.makeText(this, "Try again!!!! :(", Toast.LENGTH_SHORT).show();
+            if (!TextUtils.isEmpty(totalText)) {
+                if (totalText.trim().equals(sentences.get(pos).getPronunciation())) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        txtText.setTextColor(getApplicationContext().getColor(R.color.correct));
+                    }else{
+                        txtText.setTextColor(getResources().getColor(R.color.correct));
                     }
-                } else {
-                    Toast.makeText(this, "Input invalid :(", Toast.LENGTH_SHORT).show();
+                    try {
+                        String mMp3Name = "correct";
+                        Resources res = getResources();
+                        int resID = res.getIdentifier(mMp3Name, "raw", getPackageName());
+                        mediaPlayer = MediaPlayer.create(Keyboard.this, resID);
+                        mediaPlayer.start();
+
+                    } catch (Exception e1) {
+                        readFromUrl(num);
+                    }
+
+                }else{
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        txtText.setTextColor(getApplicationContext().getColor(R.color.error));
+                    }else{
+                        txtText.setTextColor(getResources().getColor(R.color.error));
+                    }
+                    try {
+                        String mMp3Name ="incorrect";
+                        Resources res = getResources();
+                        int resID = res.getIdentifier(mMp3Name, "raw", getPackageName());
+                        mediaPlayer = MediaPlayer.create(Keyboard.this, resID);
+                        mediaPlayer.start();
+                    } catch (Exception e1) {
+                        readFromUrl(num);
+                    }
                 }
-            } else {
-                Toast.makeText(this, "Api Error :(", Toast.LENGTH_SHORT).show();
             }
+            txtTextPronun.setText(sentences.get(pos).getPronunciation());
         }
 
     }
+
     @Override
     public void onPrepared(MediaPlayer mp) {
         mp.start();
@@ -377,7 +459,7 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
             mediaPlayer.setOnErrorListener(this);
             try {
                 mediaPlayer.setDataSource(getApplicationContext(), Uri.parse("https://noidung.tienganh123.com/file/baihoc/pronunciation/coban/" +
-                        "bai" + num + "/u" + num + ".mp3" + "123123123123123123123123"));
+                        "bai" + num + "/u" + num + ".mp3" ));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -386,13 +468,17 @@ public class Keyboard extends BaseActivity implements View.OnClickListener, Medi
         }
     }
 
+
+
     @Override
-    public void onOxfordPronuncationListenerSuccess(OxfordObject oxfordObject) {
-        if(null == oxfordObject){
-            Toast.makeText(this, "Loi api, do st", Toast.LENGTH_SHORT).show();
-        }else {
-            apiWord = oxfordObject.getResults()[0].getLexicalEntries()[0].getPronunciations()[0].getPhoneticSpelling();
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            textToSpeech.setLanguage(Locale.ENGLISH);
         }
-        closeDialog();
+    }
+
+    public void speak(String text) {
+        textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+
     }
 }

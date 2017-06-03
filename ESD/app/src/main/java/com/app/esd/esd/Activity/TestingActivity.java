@@ -1,11 +1,13 @@
 package com.app.esd.esd.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.app.esd.esd.R;
 
@@ -25,6 +27,13 @@ public class TestingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+        ((LinearLayout) findViewById(R.id.ll_test)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent s=new Intent(getApplicationContext(),TestingLessionActivity.class);
+                startActivity(s);
             }
         });
     }

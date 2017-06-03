@@ -1,5 +1,6 @@
 package com.app.esd.esd.Modals;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

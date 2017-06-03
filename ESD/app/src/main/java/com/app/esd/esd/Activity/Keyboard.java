@@ -52,14 +52,7 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
         super.onCreate(savedInstanceState);
         listText=new ArrayList<>();
         sentences=new ArrayList<>();
-        Sentence sentence=new Sentence();
-        sentence.setText("Love");
-        sentence.setPronunciation("lʌv");
-        Sentence sentence1=new Sentence();
-        sentence1.setText("shit");
-        sentence1.setPronunciation("ʃɪt");
-        sentences.add(sentence);
-        sentences.add(sentence1);
+        addData2();
         initButton();
         textToSpeech = new TextToSpeech(this, this);
         pos=0;
@@ -71,7 +64,31 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
         txtText.setText(sentences.get(pos).getText());
         txtStt.setText(pos+1+"/"+sentences.size());
     }
+    public void addData2(){
+        List answers =new ArrayList<>();
+        answers.add("Từ chứa âm iː");
+        answers.add("Từ chứa âm I");
+        Sentence sentence=new Sentence("ship","ʃɪp",1, null,answers,0);
+        Sentence sentence1=new Sentence("see","siː",1, null,answers,1);
+        Sentence sentence2=new Sentence("sheep","ʃiːp",1, null,answers,1);
+        Sentence sentence3=new Sentence("been","biːn",1, null,answers,1);
+        Sentence sentence4=new Sentence("tin","tɪn",1, null,answers,0);
+        Sentence sentence5=new Sentence("sit","sɪt",1, null,answers,0);
+        Sentence sentence6=new Sentence("seat","siːt",1, null,answers,1);
+        Sentence sentence7=new Sentence("it","ɪt",1, null,answers,0);
+        Sentence sentence8=new Sentence("sing","sɪŋ",1, null,answers,0);
 
+        sentences.add(sentence);
+        sentences.add(sentence1);
+        sentences.add(sentence2);
+        sentences.add(sentence3);
+        sentences.add(sentence4);
+        sentences.add(sentence5);
+        sentences.add(sentence6);
+        sentences.add(sentence7);
+        sentences.add(sentence8);
+        Sentence sentence9=new Sentence("agree","əˈgriː",1, null,answers,1);
+    }
 
     public void initButton() {
 
@@ -412,7 +429,7 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
                         mediaPlayer.start();
 
                     } catch (Exception e1) {
-                        readFromUrl(num);
+
                     }
 
                 }else{
@@ -428,7 +445,6 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
                         mediaPlayer = MediaPlayer.create(Keyboard.this, resID);
                         mediaPlayer.start();
                     } catch (Exception e1) {
-                        readFromUrl(num);
                     }
                 }
             }

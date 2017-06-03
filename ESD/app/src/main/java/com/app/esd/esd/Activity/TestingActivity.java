@@ -29,10 +29,19 @@ public class TestingActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        ((LinearLayout) findViewById(R.id.ll_test)).setOnClickListener(new View.OnClickListener() {
+        ((LinearLayout) findViewById(R.id.ll_testvao)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent s=new Intent(getApplicationContext(),TestingLessionActivity.class);
+                s.putExtra("C",1);
+                startActivity(s);
+            }
+        });
+        ((LinearLayout) findViewById(R.id.ll_testra)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent s=new Intent(getApplicationContext(),TestingLessionActivity.class);
+                s.putExtra("C",2);
                 startActivity(s);
             }
         });

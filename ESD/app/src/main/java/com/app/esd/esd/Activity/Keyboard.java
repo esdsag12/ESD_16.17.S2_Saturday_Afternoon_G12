@@ -53,6 +53,7 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
         listText=new ArrayList<>();
         sentences=new ArrayList<>();
         addData2();
+        addData();
         initButton();
         textToSpeech = new TextToSpeech(this, this);
         pos=0;
@@ -70,14 +71,14 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
         answers.add("Từ chứa âm I");
         Sentence sentence=new Sentence("ship","ʃɪp",1, null,answers,0);
         Sentence sentence1=new Sentence("see","siː",1, null,answers,1);
-        Sentence sentence2=new Sentence("sheep","ʃiːp",1, null,answers,1);
+        Sentence sentence2=new Sentence("sheep","ʃ'iːp",1, null,answers,1);
         Sentence sentence3=new Sentence("been","biːn",1, null,answers,1);
         Sentence sentence4=new Sentence("tin","tɪn",1, null,answers,0);
         Sentence sentence5=new Sentence("sit","sɪt",1, null,answers,0);
         Sentence sentence6=new Sentence("seat","siːt",1, null,answers,1);
         Sentence sentence7=new Sentence("it","ɪt",1, null,answers,0);
         Sentence sentence8=new Sentence("sing","sɪŋ",1, null,answers,0);
-
+        Sentence sentence9=new Sentence("agree","əˈgriː",1, null,answers,1);
         sentences.add(sentence);
         sentences.add(sentence1);
         sentences.add(sentence2);
@@ -87,7 +88,32 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
         sentences.add(sentence6);
         sentences.add(sentence7);
         sentences.add(sentence8);
-        Sentence sentence9=new Sentence("agree","əˈgriː",1, null,answers,1);
+        sentences.add(sentence9);
+    }
+    public void addData(){
+        List answers =new ArrayList<>();
+        answers.add("Từ chứa âm iː");
+        answers.add("Từ chứa âm I");
+        Sentence sentence=new Sentence("bit","bɪt",1, null,answers,0);
+        Sentence sentence1=new Sentence("scene","siːn",1, null,answers,1);
+        Sentence sentence2=new Sentence("meat","miːt",1, null,answers,1);
+        Sentence sentence3=new Sentence("women","ˈwɪmɪn",1, null,answers,0);
+        Sentence sentence4=new Sentence("England","ˈɪŋglənd",1, null,answers,0);
+        Sentence sentence5=new Sentence("become","bɪˈkʌm",1, null,answers,0);
+        Sentence sentence6=new Sentence("build","bɪld",1, null,answers,0);
+        Sentence sentence7=new Sentence("chief","ʧiːf",1, null,answers,1);
+        Sentence sentence8=new Sentence("transcription","trænsˈkrɪpʃən",1, null,answers,1);
+        Sentence sentence9=new Sentence("hit","hɪt",1, null,answers,0);
+        sentences.add(sentence);
+        sentences.add(sentence1);
+        sentences.add(sentence2);
+        sentences.add(sentence3);
+        sentences.add(sentence4);
+        sentences.add(sentence5);
+        sentences.add(sentence6);
+        sentences.add(sentence7);
+        sentences.add(sentence8);
+        sentences.add(sentence9);
     }
 
     public void initButton() {
@@ -415,7 +441,7 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
         }
         if (num == 46) {
             if (!TextUtils.isEmpty(totalText)) {
-                if (totalText.trim().equals(sentences.get(pos).getPronunciation())) {
+                if (totalText.trim().equals(sentences.get(pos).getPronunciation().replace("ˈ",""))) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         txtText.setTextColor(getApplicationContext().getColor(R.color.correct));
                     }else{

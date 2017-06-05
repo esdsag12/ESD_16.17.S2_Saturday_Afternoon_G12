@@ -56,11 +56,6 @@ public class PracticeActivity extends BaseActivity {
                         startActivity(open_keyboard);
                         break;
                     case 1:
-                        Intent open_speak = new Intent(PracticeActivity.this,
-                                PracticeRead.class);
-                        startActivity(open_speak);
-                        break;
-                    case 2:
                         Intent open_listen = new Intent(PracticeActivity.this,
                                 VowelPairActivity.class);
                         Pair<View, String> pair_listen_imgv =

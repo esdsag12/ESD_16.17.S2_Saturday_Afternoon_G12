@@ -3,6 +3,7 @@
     package="com.app.esd.esd">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,6 @@
         <activity android:name=".Activity.PracticeActivity" />
         <activity android:name=".Activity.TestingActivity" />
         <activity android:name=".Activity.VowelPairActivity"></activity>
-        <activity android:name=".Activity.PracticeRead"></activity>
         <activity android:name=".Activity.TestingLessionActivity" />
         <activity android:name=".Activity.FinishActivity" />
     </application>

@@ -58,17 +58,6 @@ public class PractVPAdapter extends PagerAdapter {
                 text_des.setText(customPagerEnum.getTitle());
                 break;
             case 1:
-                text_des = (TextView) layout.findViewById(R.id.tv_speak_pager);
-                text_des.setText(customPagerEnum.getTitle());
-                btn_open = (Button) layout.findViewById(R.id.btn_openSpeak_pager);
-                btn_open.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        onBtnItemClickListener.onClick(position, layout);
-                    }
-                });
-                break;
-            case 2:
                 text_des = (TextView) layout.findViewById(R.id.tv_listen_pager);
                 text_des.setText(customPagerEnum.getTitle());
                 btn_open = (Button) layout.findViewById(R.id.btn_openListen_pager);
@@ -102,7 +91,7 @@ public class PractVPAdapter extends PagerAdapter {
     public enum CustomPagerEnum {
 
         KEYBOARD("keyboard", R.layout.layout_pager_keyboard),
-        SPEAKING("speaking", R.layout.layout_pager_speak),
+
         CHOOSE("listening", R.layout.layout_pager_listen);
 //        BLUE(R.layout.view_blue),
 //        ORANGE(R.layout.view_orange);

@@ -289,9 +289,7 @@ public class TestingLessionActivity extends AppCompatActivity implements TextToS
                     }else{
                         animLL(ln2);
                     }
-                }else{
-                    showAnswer();
-                }
+                }showAnswer();
                 ln1.setEnabled(false);
                 ln2.setEnabled(false);
             }
@@ -335,16 +333,16 @@ public class TestingLessionActivity extends AppCompatActivity implements TextToS
                             //clearError();
                             isCorrect=false;
                             animLL(ln2);
-                            try {
-                                String mMp3Name = "incorrect";
-                                Resources res = getResources();
-                                int resID = res.getIdentifier(mMp3Name, "raw", getPackageName());
-                                mediaPlayer = MediaPlayer.create(TestingLessionActivity.this, resID);
-                                mediaPlayer.start();
-
-                            } catch (Exception e1) {
-
-                            }
+//                            try {
+//                                String mMp3Name = "incorrect";
+//                                Resources res = getResources();
+//                                int resID = res.getIdentifier(mMp3Name, "raw", getPackageName());
+//                                mediaPlayer = MediaPlayer.create(TestingLessionActivity.this, resID);
+//                                mediaPlayer.start();
+//
+//                            } catch (Exception e1) {
+//
+//                            }
                         }
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -383,16 +381,16 @@ public class TestingLessionActivity extends AppCompatActivity implements TextToS
                             ln2.setBackgroundColor(getResources().getColor(R.color.error));
                             isCorrect = false;
                             animLL(ln1);
-                            try {
-                                String mMp3Name = "incorrect";
-                                Resources res = getResources();
-                                int resID = res.getIdentifier(mMp3Name, "raw", getPackageName());
-                                mediaPlayer = MediaPlayer.create(TestingLessionActivity.this, resID);
-                                mediaPlayer.start();
-
-                            } catch (Exception e1) {
-
-                            }
+//                            try {
+//                                String mMp3Name = "incorrect";
+//                                Resources res = getResources();
+//                                int resID = res.getIdentifier(mMp3Name, "raw", getPackageName());
+//                                mediaPlayer = MediaPlayer.create(TestingLessionActivity.this, resID);
+//                                mediaPlayer.start();
+//
+//                            } catch (Exception e1) {
+//
+//                            }
                         }
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -406,7 +404,7 @@ public class TestingLessionActivity extends AppCompatActivity implements TextToS
         }
     }
     public void animLL(final LinearLayout ll){
-        CountDownTimer countDownTimer=new CountDownTimer(6000,1000) {
+        CountDownTimer countDownTimer=new CountDownTimer(4000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if((millisUntilFinished/1000)%2==0){

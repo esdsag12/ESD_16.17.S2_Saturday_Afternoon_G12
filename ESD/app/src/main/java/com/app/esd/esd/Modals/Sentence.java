@@ -12,6 +12,15 @@ public class Sentence {
     String text;
     String pronunciation;
 
+    public String getRecUrl() {
+        return recUrl;
+    }
+
+    public void setRecUrl(String recUrl) {
+        this.recUrl = recUrl;
+    }
+
+    String recUrl;
 
     boolean isChoosed = false;
 
@@ -118,6 +127,7 @@ public class Sentence {
     public void setPronunciation(String pronunciation) {
         this.pronunciation = pronunciation;
     }
+
 }
 
 

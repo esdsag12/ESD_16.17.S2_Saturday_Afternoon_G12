@@ -369,8 +369,10 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
                 break;
             case R.id.buttonRead:
                 speak(sentences.get(pos).getText());
+                num =50;
                 break;
             case R.id.buttonNext:
+                num =50;
                 num=-1;
                 tempText = "";
                 totalText = "";
@@ -390,6 +392,7 @@ Keyboard extends BaseActivity implements View.OnClickListener, MediaPlayer.OnPre
                 txtStt.setText(pos+1+"/"+sentences.size());
                 break;
             case R.id.buttonPrev:
+                num =50;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     txtText.setTextColor(getApplicationContext().getColor(R.color.white));
                 }else{
